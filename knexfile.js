@@ -1,17 +1,16 @@
-import path from "path";
-
 const config = {
    development: {
       client: "sqlite3",
       connection: {
-         filename: "sqlite.db"
+         filename:
+            "./database/data/family-command-center.db3"
       },
       useNullAsDefault: true,
       migrations: {
-         directory: path.join(__dirname, "migrations")
+         directory: "./database/data/migrations"
       },
       seeds: {
-         directory: path.join(__dirname, "seeds")
+         directory: "./database/data/seeds"
       }
    },
    test: {
@@ -19,10 +18,10 @@ const config = {
       connection: ":memory:",
       useNullAsDefault: true,
       migrations: {
-         directory: path.join(__dirname, "migrations")
+         directory: "./database/data/migrations"
       },
       seeds: {
-         directory: path.join(__dirname, "seeds")
+         directory: "./database/data/seeds"
       }
    }
 };
