@@ -1,49 +1,86 @@
-import { Nav, Container, Row, Col } from "react-bootstrap";
+import { Nav, Row, Col, Tab } from "react-bootstrap";
 import { usePersons } from "../hooks/UsePersons";
 
 export const TabContainer = () => {
    const persons = usePersons();
 
    return (
-      <Container fluid>
-         <Row>
-            <Col xs={1}>
+      <Tab.Container defaultActiveKey="Mommy">
+         <Row className="full-screen">
+            <Col
+               xs={1}
+               className="pe-0 bg-wintergreen-dream ps-4 py-3"
+            >
                <Nav
-                  variant="pills"
-                  defaultActiveKey="/home"
-                  className="flex-column"
+                  className="nav-pills flex-column"
+                  role="tablist"
                >
                   {persons.map((person) => (
                      <Nav.Item key={person.PersonId}>
                         <Nav.Link
-                           href={`/${person.PersonName}`}
+                           className="nav-link"
+                           eventKey={person.PersonName}
                         >
                            <img
-                              src={`../../${person.AvatarPath}`}
+                              src={`${person.AvatarPath}`}
+                              width="100%"
                            />
-                           {person.PersonName}
                         </Nav.Link>
                      </Nav.Item>
                   ))}
-                  {/* <Nav.Item>
-                     <Nav.Link href="/home">
-                        Active
-                     </Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                     <Nav.Link eventKey="link-1">
-                        Option 2
-                     </Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                     <Nav.Link eventKey="disabled" disabled>
-                        Disabled
-                     </Nav.Link>
-                  </Nav.Item> */}
                </Nav>
             </Col>
-            <Col xs={11}></Col>
+            <Col xs={11} className="bg-light-cyan ps-0">
+               <Tab.Content className="h-100">
+                  {persons.map((person) => (
+                     <Tab.Pane
+                        key={person.PersonId}
+                        eventKey={person.PersonName}
+                        className="h-100"
+                     >
+                        {person.PersonName}
+                     </Tab.Pane>
+                  ))}
+               </Tab.Content>
+            </Col>
          </Row>
-      </Container>
+      </Tab.Container>
    );
 };
+
+/* <Tab.Container defaultActiveKey="Mommy">
+            <Row>
+               <Col xs={1} className="py-1 bg-light-cyan">
+                  <Nav className="ps-2 flex-column">
+                     {persons.map((person) => (
+                        <Nav.Item
+                           key={person.PersonId}
+                           className="my-2"
+                        >
+                           <Button
+                              className="btn-wintergreen-dream"
+                              eventKey={person.PersonName}
+                           >
+                              <img
+                                 src={`${person.AvatarPath}`}
+                                 width="100%"
+                              />
+                           </Button>
+                        </Nav.Item>
+                     ))}
+                  </Nav>
+               </Col>
+               <Col xs={11}>
+                  <Tab.Content>
+                     {persons.map((person) => (
+                        <Tab.Pane
+                           eventKey={person.PersonName}
+                           key={person.PersonId}
+                        >
+                           {person.PersonName}
+                        </Tab.Pane>
+                     ))}
+                  </Tab.Content>
+               </Col>
+            </Row>
+         </Tab.Container> */

@@ -1,42 +1,44 @@
 {
-  "name": "family-command-center",
-  "version": "1.0.0",
-  "author": "Karen R. Zwier",
-  "type": "module",
-  "main": "index.js",
-  "scripts": {
-    "server": "nodemon index.js",
-    "start": "react-scripts start",
-    "test": "jest --watch"
-  },
-  "dependencies": {
-    "bootstrap": "^5.2.0",
-    "cors": "^2.8.5",
-    "express": "^4.18.1",
-    "knex": "^2.2.0",
-    "react-bootstrap": "^2.5.0",
-    "sqlite3": "^5.0.11"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.18.13",
-    "@babel/preset-env": "^7.18.10",
-    "@jest-mock/express": "^2.0.1",
-    "babel-jest": "^29.0.2",
-    "chance": "^1.1.8",
-    "jest": "^29.0.1",
-    "nodemon": "^2.0.19",
-    "react-scripts": "^5.0.1"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+   "name": "family-command-center",
+   "version": "1.0.0",
+   "author": "Karen R. Zwier",
+   "type": "module",
+   "main": "index.js",
+   "scripts": {
+      "server": "nodemon index.js",
+      "start": "react-scripts start",
+      "test": "jest --watch",
+      "sass": "sass scss/App.scss src/App.css"
+   },
+   "dependencies": {
+      "bootstrap": "^5.2.0",
+      "cors": "^2.8.5",
+      "express": "^4.18.1",
+      "knex": "^2.2.0",
+      "react-bootstrap": "^2.5.0",
+      "sqlite3": "^5.0.11"
+   },
+   "devDependencies": {
+      "@babel/core": "^7.18.13",
+      "@babel/preset-env": "^7.18.10",
+      "@jest-mock/express": "^2.0.1",
+      "babel-jest": "^29.0.2",
+      "chance": "^1.1.8",
+      "jest": "^29.0.1",
+      "nodemon": "^2.0.19",
+      "react-scripts": "^5.0.1",
+      "sass": "^1.54.9"
+   },
+   "browserslist": {
+      "production": [
+         ">0.2%",
+         "not dead",
+         "not op_mini all"
+      ],
+      "development": [
+         "last 1 chrome version",
+         "last 1 firefox version",
+         "last 1 safari version"
+      ]
+   }
 }

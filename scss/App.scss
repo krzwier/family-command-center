@@ -1,0 +1,51 @@
+@use "sass:map";
+
+$theme-colors: (
+   "mint-cream": #f6fff8,
+   "cambridge-blue": #a4c3b2,
+   "light-cyan": #cce3de,
+   "wintergreen-dream": #6b9080,
+   "dark-gray": #343436
+);
+
+/* import bootstrap to set changes */
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+.full-screen {
+   height: 100vh;
+   margin: 0;
+}
+
+.nav-pills {
+   width: 100%;
+}
+.nav-item {
+   width: 100%;
+}
+.nav-pills .nav-link {
+   padding: 24px 8px 24px 12px;
+   background: map.get($theme-colors, "dark-gray");
+   border-top-right-radius: 0;
+   border-bottom-right-radius: 0;
+   border-bottom-left-radius: 30px;
+   border-top-left-radius: 30px;
+}
+.nav-pills .nav-link.active {
+   background: #cce3de;
+}
+
+// .tab-content {
+//    position: relative;
+//    //    margin-top: -50px;
+//    background: #cce3de;
+//    color: #000;
+//    z-index: 1000;
+//    padding: 30px;
+//    margin-bottom: 50px;
+// }
+// .tab-content button {
+//    border-radius: 15px;
+//    width: 100px;
+//    margin: 0 auto;
+//    float: right;
+// }
