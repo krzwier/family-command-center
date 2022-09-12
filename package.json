@@ -8,7 +8,7 @@
       "server": "nodemon index.js",
       "start": "react-scripts start",
       "test": "jest --watch",
-      "sass": "sass scss/App.scss src/App.css"
+      "sass": "sass --watch scss/App.scss src/App.css"
    },
    "dependencies": {
       "bootstrap": "^5.2.0",

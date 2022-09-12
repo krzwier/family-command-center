@@ -8,8 +8,15 @@ $theme-colors: (
    "dark-gray": #343436
 );
 
+$font-size-base: 2rem;
+
 /* import bootstrap to set changes */
 @import "../node_modules/bootstrap/scss/bootstrap";
+
+// input.check-box {
+//    width: 32px;
+//    height: 32px;
+// }
 
 .full-screen {
    height: 100vh;
@@ -34,18 +41,128 @@ $theme-colors: (
    background: #cce3de;
 }
 
-// .tab-content {
-//    position: relative;
-//    //    margin-top: -50px;
-//    background: #cce3de;
-//    color: #000;
-//    z-index: 1000;
-//    padding: 30px;
-//    margin-bottom: 50px;
+// body {
+//    font-size: 14px;
+//    line-height: 1.8;
+//    font-weight: normal;
+//    background: #fafafa;
+//    color: lighten($black, 50%);
 // }
-// .tab-content button {
-//    border-radius: 15px;
-//    width: 100px;
-//    margin: 0 auto;
-//    float: right;
-// }
+a {
+   transition: 0.3s all ease;
+   color: $primary;
+   &:hover,
+   &:focus {
+      text-decoration: none !important;
+      outline: none !important;
+      box-shadow: none;
+   }
+}
+button {
+   transition: 0.3s all ease;
+   &:hover,
+   &:focus {
+      text-decoration: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+   }
+}
+
+//COVER BG
+.img {
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center center;
+}
+
+.wrap {
+   // border: 1px solid rgba(0,0,0,.1);
+   padding: 30px;
+   background: $primary;
+   border-radius: 4px;
+}
+.heading-title {
+   h3 {
+      color: $white;
+      font-size: 24px;
+   }
+}
+.routine-box {
+   border-radius: 30px;
+}
+
+//CHECKBOX
+ul.ks-cboxtags {
+   list-style: none;
+   padding: 20px;
+   li {
+      display: block;
+      label {
+         display: inline-block;
+         background-color: map.get(
+            $theme-colors,
+            "mint-cream"
+         );
+         // border: 1px solid rgba(0, 0, 0,.1);
+         color: map.get($theme-colors, "dark-gray");
+
+         border-radius: 4px;
+         white-space: nowrap;
+         margin: 0 0 10px 0;
+         -webkit-touch-callout: none;
+         -webkit-user-select: none;
+         -moz-user-select: none;
+         -ms-user-select: none;
+         user-select: none;
+         -webkit-tap-highlight-color: transparent;
+         transition: all 0.3s;
+         display: block;
+      }
+   }
+}
+
+ul.ks-cboxtags li label {
+   position: relative;
+   padding: 10px 20px;
+   cursor: pointer;
+   &::before {
+      display: inline-block;
+      font-style: normal;
+      font-variant: normal;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      font-family: "FontAwesome";
+      font-weight: 900;
+      font-size: 32px;
+      padding: 0;
+      margin-right: 15px;
+      content: "\f1db";
+      color: rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out;
+      position: absolute;
+      right: 20px;
+      //   margin-top: 5px;
+      @include transition(0.3s);
+   }
+}
+
+ul.ks-cboxtags
+   li
+   input[type="checkbox"]:checked
+   + label::before {
+   content: "\f058";
+   transition: transform 0.3s ease-in-out;
+   color: map.get($theme-colors, "wintergreen-dream");
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label {
+   transition: all 0.2s;
+}
+
+ul.ks-cboxtags li input[type="checkbox"] {
+   display: absolute;
+}
+ul.ks-cboxtags li input[type="checkbox"] {
+   position: absolute;
+   opacity: 0;
+}

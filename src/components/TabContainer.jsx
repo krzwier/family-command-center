@@ -1,5 +1,6 @@
 import { Nav, Row, Col, Tab } from "react-bootstrap";
 import { usePersons } from "../hooks/UsePersons";
+import { PersonalDashboard } from "./PersonalDashboard";
 
 export const TabContainer = () => {
    const persons = usePersons();
@@ -30,7 +31,7 @@ export const TabContainer = () => {
                   ))}
                </Nav>
             </Col>
-            <Col xs={11} className="bg-light-cyan ps-0">
+            <Col xs={11} className="bg-light-cyan px-0">
                <Tab.Content className="h-100">
                   {persons.map((person) => (
                      <Tab.Pane
@@ -38,7 +39,9 @@ export const TabContainer = () => {
                         eventKey={person.PersonName}
                         className="h-100"
                      >
-                        {person.PersonName}
+                        <PersonalDashboard
+                           personId={person.PersonId}
+                        />
                      </Tab.Pane>
                   ))}
                </Tab.Content>
