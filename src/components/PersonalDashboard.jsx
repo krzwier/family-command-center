@@ -12,6 +12,7 @@ import { useState, useEffect } from "react";
 export const PersonalDashboard = (props) => {
    const { personId } = props;
    const person = usePerson(personId);
+   //    const tasks = useTasks();
    var [date, setDate] = useState(new Date());
    //    const currentDateTime = new Date();
 
