@@ -2,8 +2,7 @@ const config = {
    development: {
       client: "sqlite3",
       connection: {
-         filename:
-            "./database/data/family-command-center.db3"
+         filename: "./database/data/family-command-center.db3"
       },
       useNullAsDefault: true,
       migrations: {
@@ -15,13 +14,15 @@ const config = {
    },
    test: {
       client: "sqlite3",
-      connection: ":memory:",
+      connection: {
+         filename: ":memory:"
+      },
       useNullAsDefault: true,
       migrations: {
-         directory: "./database/data/migrations"
+         directory: "./database/test/migrations"
       },
       seeds: {
-         directory: "./database/data/seeds"
+         directory: "./database/test/seeds"
       }
    }
 };

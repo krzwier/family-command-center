@@ -1,8 +1,8 @@
 export const up = (knex) => {
    return knex.schema.createTable("person", (tbl) => {
       tbl.integer("PersonId").notNullable();
-      tbl.string("PersonName").notNullable();
-      tbl.string("AvatarPath").notNullable();
+      tbl.text("PersonName").notNullable();
+      tbl.text("AvatarPath").notNullable();
    });
 };
 

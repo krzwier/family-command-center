@@ -2,6 +2,9 @@ import express from "express";
 import { personsRouter } from "./controllers/PersonController.js";
 import { tasksRouter } from "./controllers/TaskController.js";
 import cors from "cors";
+import { routinesRouter } from "./controllers/RoutineController.js";
+import { moneyRouter } from "./controllers/MoneyController.js";
+import { pointRouter } from "./controllers/PointController.js";
 
 const server = express();
 
@@ -17,5 +20,8 @@ server.use(
 
 server.use("/persons", personsRouter);
 server.use("/tasks", tasksRouter);
+server.use("/routines", routinesRouter);
+server.use("/moneyBalance", moneyRouter);
+server.use("/pointBalance", pointRouter);
 
 export default server;

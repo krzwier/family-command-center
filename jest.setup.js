@@ -1,1 +1,1 @@
-jest.mock("knex");
+import { jest } from "@jest/globals";

@@ -7,6 +7,7 @@ export const up = (knex) => {
       tbl.integer("EndHour").notNullable();
       tbl.string("IconPath").notNullable();
       tbl.string("DaysActive").notNullable();
+      tbl.boolean("Completed").notNullable();
    });
 };
 

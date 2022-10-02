@@ -1,65 +1,74 @@
-import { personController } from "./PersonController";
-import {
-   knexMock,
-   queryBuilder
-} from "../../database/db-config";
-import Chance from "chance";
+import { personController, singlePersonController } from "./PersonController";
+import { allPersons } from "../../database/test/seeds/002-person";
+import { db } from "../../database/db-config";
+import { jest } from "@jest/globals";
+import { createResponse, createRequest } from "node-mocks-http";
 
-jest.mock("knex");
-const chance = Chance();
-
-const mockResponse = () => {
-   const res = {};
-   res.status = jest.fn().mockReturnValue(res);
-   res.json = jest.fn().mockReturnValue(res);
-   return res;
-};
-
-afterEach(jest.clearAllMocks);
-
-test("get should call for database table 'person'", async () => {
-   const res = mockResponse();
-
-   await personController({}, res);
-
-   expect(knexMock).toHaveBeenCalledWith("person");
+beforeAll(async () => {
+   await db.migrate.latest();
+   await db.seed.run();
 });
 
-test("get should return 200", async () => {
-   const res = mockResponse();
+afterEach(jest.restoreAllMocks);
 
-   await personController({}, res);
-
-   expect(res.status).toHaveBeenCalledWith(200);
+afterAll(async () => {
+   db.destroy();
 });
 
-test("get should return correct body", async () => {
-   const expectedPersons = [
-      {
-         PersonId: chance.integer(),
-         PersonName: chance.string(),
-         AvatarPath: chance.string()
+describe("personController", () => {
+   test("when query returns successfully should return 200 with result", async () => {
+      const res = createResponse();
+
+      await personController({}, res);
+
+      const status = res._getStatusCode();
+      const body = res._getJSONData();
+      expect(status).toBe(200);
+      expect(body).toEqual({ persons: allPersons });
+   });
+
+   test("when database throws error should return 500 with message", async () => {
+      jest.spyOn(db.context, "queryBuilder").mockImplementation((done) => {
+         throw new Error();
+      });
+      const res = createResponse();
+
+      await personController({}, res);
+
+      const status = res._getStatusCode();
+      const { error } = res._getJSONData();
+      expect(status).toBe(500);
+      expect(error).toMatch(/^error retrieving persons/i);
+   });
+});
+
+describe("singlePersonController", () => {
+   test.each([15, 82])(
+      "when specific person id requested should return 200 with correct result",
+      async (id) => {
+         const response = createResponse();
+         const request = createRequest();
+         request.params.personId = id;
+         const expectedPerson = allPersons.filter((person) => person.PersonId === id)[0];
+
+         await singlePersonController(request, response);
+
+         expect(response._getStatusCode()).toBe(200);
+         expect(response._getJSONData()).toEqual(expectedPerson);
       }
-   ];
-   queryBuilder.then = jest.fn((done) =>
-      done(expectedPersons)
    );
-   const res = mockResponse();
 
-   await personController({}, res);
+   test("when database throws error should return 500 with message", async () => {
+      jest.spyOn(db.context, "queryBuilder").mockImplementation((done) => {
+         throw new Error();
+      });
+      const response = createResponse();
+      const request = createRequest();
+      request.params.personId = 15;
 
-   expect(res.json).toHaveBeenCalledWith({
-      persons: expectedPersons
+      await singlePersonController(request, response);
+
+      expect(response._getStatusCode()).toBe(500);
+      expect(response._getJSONData().error).toMatch(/^error retrieving person with id '15'/i);
    });
-});
-
-test("when database query errors should return 500", async () => {
-   queryBuilder.then = jest.fn((done) => {
-      throw new Error();
-   });
-   const res = mockResponse();
-
-   await personController({}, res);
-
-   expect(res.status).toHaveBeenCalledWith(500);
 });
