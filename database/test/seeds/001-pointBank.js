@@ -1,19 +1,11 @@
 export const allPoints = [
    {
-      PersonId: 1,
-      Balance: 0
+      PersonId: 15,
+      Balance: 34
    },
    {
-      PersonId: 2,
-      Balance: 0
-   },
-   {
-      PersonId: 3,
-      Balance: 0
-   },
-   {
-      PersonId: 4,
-      Balance: 0
+      PersonId: 82,
+      Balance: 2
    }
 ];
 

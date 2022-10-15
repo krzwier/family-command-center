@@ -5,7 +5,7 @@
 
 export default {
    // All imported modules in your tests should be mocked automatically
-   // automock: false,
+   automock: false,
 
    // Stop running tests after `n` failures
    // bail: 0,
@@ -125,7 +125,7 @@ export default {
    // runner: "jest-runner",
 
    // The paths to modules that run some code to configure or set up the testing environment before each test
-   // setupFiles: ["<rootDir>/jest.setup.js"]
+   //    setupFiles: ["<rootDir>/jest.setup.js"],
 
    // A list of paths to modules that run some code to configure or set up the testing framework before each test
    // setupFilesAfterEnv: [],
@@ -137,7 +137,7 @@ export default {
    // snapshotSerializers: [],
 
    // The test environment that will be used for testing
-   // testEnvironment: "jest-environment-jsdom",
+   //    testEnvironment: "jest-environment-jsdom",
 
    // Options that will be passed to the testEnvironment
    // testEnvironmentOptions: {},
