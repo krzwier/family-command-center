@@ -23,7 +23,7 @@ export const TabContainer = () => {
                <Tab.Content className="h-100">
                   {persons.map((person) => (
                      <Tab.Pane key={person.PersonId} eventKey={person.PersonName} className="h-100">
-                        <PersonalDashboard personId={person.PersonId} />
+                        <PersonalDashboard key={person.PersonId} personId={person.PersonId} />
                      </Tab.Pane>
                   ))}
                </Tab.Content>

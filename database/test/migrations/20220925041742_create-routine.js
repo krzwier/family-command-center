@@ -6,7 +6,7 @@ export const up = (knex) => {
       tbl.integer("StartHour").notNullable();
       tbl.integer("EndHour").notNullable();
       tbl.string("IconPath").notNullable();
-      tbl.string("DaysActive").notNullable();
+      tbl.string("ActiveOnNonSchoolDays").notNullable();
       tbl.boolean("Completed").notNullable();
    });
 };

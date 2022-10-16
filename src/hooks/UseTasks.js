@@ -1,9 +1,13 @@
 import { useState, useEffect, useCallback } from "react";
-import { saveRoutineCompletion } from "../services/RoutineCompletion.js";
 
-export const useTasks = (routineId, incrementPointBalance, decrementPointBalance) => {
+export const useTasks = (
+   routineId,
+   incrementPointBalance,
+   decrementPointBalance,
+   routineIsComplete
+) => {
    const [tasks, setTasks] = useState([]);
-   const [listIsComplete, setListIsComplete] = useState(false);
+   const [listIsComplete, setListIsComplete] = useState(routineIsComplete);
 
    useEffect(() => {
       fetch(`http://localhost:4001/tasks/routineId=${routineId}`)
@@ -13,7 +17,7 @@ export const useTasks = (routineId, incrementPointBalance, decrementPointBalance
             setTasks(
                incomingTasks.map((task) => ({
                   ...task,
-                  completed: false
+                  completed: routineIsComplete
                }))
             );
          });
@@ -26,7 +30,7 @@ export const useTasks = (routineId, incrementPointBalance, decrementPointBalance
             completed: task.TaskId === taskId ? !task.completed : task.completed
          }));
          const routineComplete = updatedTasks.filter((task) => !task.completed).length === 0;
-         saveRoutineCompletion(routineId, routineComplete);
+         saveRoutineCompletion(routineComplete);
          if (routineComplete && !listIsComplete) {
             incrementPointBalance();
          }
@@ -37,6 +41,20 @@ export const useTasks = (routineId, incrementPointBalance, decrementPointBalance
          setListIsComplete(routineComplete);
       },
       [tasks, setTasks, listIsComplete, setListIsComplete]
+   );
+
+   const saveRoutineCompletion = useCallback(
+      (isCompleted) => {
+         fetch(
+            `http://localhost:4001/routines/saveCompletion/routineId=${routineId},isComplete=${
+               isCompleted ? 1 : 0
+            }`,
+            {
+               method: "GET"
+            }
+         );
+      },
+      [routineId]
    );
 
    return { tasks, toggleTaskCompletion, listIsComplete };

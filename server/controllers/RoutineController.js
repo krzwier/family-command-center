@@ -4,35 +4,43 @@ import { db } from "../../database/db-config.js";
 export const routinesRouter = express.Router();
 
 const routinesForPersonController = async (req, res) => {
-   const { personId, hour } = req.params;
+   const { personId, hour, isSchoolDay } = req.params;
    try {
       const routines = await db
          .select("*")
          .from("routine")
          .join("personRoutine", "routine.RoutineId", "personRoutine.RoutineId")
          .where("personRoutine.PersonId", personId)
-         .where("routine.StartHour", "<=", hour)
-         .where("routine.EndHour", ">", hour);
+         .andWhere(function () {
+            this.where("routine.ActiveOnNonSchoolDays", true).orWhere(
+               "routine.ActiveOnNonSchoolDays",
+               "<>",
+               isSchoolDay
+            );
+         })
+         .andWhere("routine.StartHour", "<=", hour)
+         .andWhere("routine.EndHour", ">", hour);
       return res.status(200).json({ routines });
    } catch (error) {
       console.log(error);
       res.status(500).json({
-         error: `Error retrieving routines for person with id '${personId}' at hour '${hour}': ${error.stack}`
+         error: `Error retrieving routines for person with id '${personId}' at hour '${hour}' with isSchoolDay = ${isSchoolDay}: ${error.stack}`
       });
    }
 };
 
 const completeRoutineController = async (req, res) => {
    const { routineId, isComplete } = req.params;
-   const status = isComplete === "true";
+   const status = parseInt(isComplete);
+   console.log(status);
    try {
       const returnMessage = await db("routine")
          .where("RoutineId", routineId)
          .update("Completed", status);
       res.status(200).send(
          `Status of routine ${routineId} has been saved as ${
-            status ? "completed" : "incomplete"
-         }. Message: ${returnMessage}`
+            status === 1 ? "completed" : "incomplete"
+         }.`
       );
    } catch (error) {
       console.log(error);
@@ -42,9 +50,12 @@ const completeRoutineController = async (req, res) => {
    }
 };
 
-routinesRouter.get("/person=:personId,hour=:hour", routinesForPersonController);
+routinesRouter.get(
+   "/person=:personId,hour=:hour,isSchoolDay=:isSchoolDay",
+   routinesForPersonController
+);
 
-routinesRouter.post(
+routinesRouter.get(
    "/saveCompletion/routineId=:routineId,isComplete=:isComplete",
    completeRoutineController
 );

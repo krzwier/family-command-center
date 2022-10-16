@@ -1,6 +1,7 @@
 import { usePerson } from "../hooks/UsePerson";
 import { useMoney } from "../hooks/UseMoney";
 import { usePoints } from "../hooks/UsePoints";
+import { useDateTime } from "../hooks/UseDateTime";
 import { DateTime } from "./DateTime";
 import { Greeting } from "./Greeting";
 import { RoutineList } from "./RoutineList";
@@ -11,24 +12,11 @@ export const PersonalDashboard = (props) => {
    const { personId } = props;
    const person = usePerson(personId);
    const moneyBalance = useMoney(personId);
-   const { pointBalance, incrementPointBalance, decrementPointBalance } = usePoints(personId);
-   const [date, setDate] = useState(new Date());
-   const [hour, setHour] = useState(0);
-
-   useEffect(() => {
-      const timer = setInterval(() => {
-         const currentDate = new Date();
-         const currentHour = currentDate.getHours();
-         setDate(date);
-         if (currentHour !== hour) {
-            setHour(currentHour);
-         }
-      }, 1000);
-
-      return () => {
-         clearInterval(timer);
-      };
-   });
+   const { pointBalance, incrementPointBalance, decrementPointBalance, markRoutineCompletion } =
+      usePoints(personId);
+   const { date, hour, isSchoolDay } = useDateTime();
+   //    const [date, setDate] = useState(new Date());
+   //    const [hour, setHour] = useState(0);
 
    return (
       <>
@@ -36,8 +24,10 @@ export const PersonalDashboard = (props) => {
             <DateTime date={date} />
             <Greeting personName={person.PersonName} date={date} />
             <RoutineList
+               key={personId}
                personId={personId}
                hour={hour}
+               isSchoolDay={isSchoolDay}
                incrementPointBalance={incrementPointBalance}
                decrementPointBalance={decrementPointBalance}
             />

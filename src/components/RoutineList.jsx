@@ -2,8 +2,8 @@ import { useRoutines } from "../hooks/UseRoutines";
 import { Routine } from "./Routine";
 
 export const RoutineList = (props) => {
-   const { personId, hour, incrementPointBalance, decrementPointBalance } = props;
-   const routines = useRoutines(personId, hour);
+   const { personId, hour, incrementPointBalance, decrementPointBalance, isSchoolDay } = props;
+   const routines = useRoutines(personId, hour, isSchoolDay);
 
    return routines.map((routine) => (
       <Routine

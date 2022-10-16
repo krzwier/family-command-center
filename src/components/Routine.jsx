@@ -10,9 +10,10 @@ export const Routine = (props) => {
    const { tasks, toggleTaskCompletion, listIsComplete } = useTasks(
       routine.RoutineId,
       incrementPointBalance,
-      decrementPointBalance
+      decrementPointBalance,
+      Boolean(routine.Completed)
    );
-   const [expanded, setExpanded] = useState(true);
+   const [expanded, setExpanded] = useState(!listIsComplete);
 
    useEffect(() => {
       if (listIsComplete) {
@@ -55,18 +56,30 @@ export const Routine = (props) => {
                   <Row className="ks-cboxtags">
                      <Col>
                         {tasks.map((task) => (
-                           <Row key={task.TaskId} className="py-1 task">
+                           <Row
+                              key={`routine${routine.RoutineId}task${task.TaskId}`}
+                              className="py-1 task"
+                           >
                               <input
                                  type="checkbox"
-                                 id={task.TaskId}
+                                 id={`routine${routine.RoutineId}task${task.TaskId}`}
                                  value={task.TaskId}
                                  className="w-25"
                                  checked={task.completed}
                                  onChange={(event) =>
-                                    toggleTaskCompletion(parseInt(event.target.id))
+                                    toggleTaskCompletion(
+                                       parseInt(
+                                          event.target.id.substring(
+                                             event.target.id.indexOf("task") + 4
+                                          )
+                                       )
+                                    )
                                  }
                               />
-                              <label htmlFor={task.TaskId} className="taskDescription">
+                              <label
+                                 htmlFor={`routine${routine.RoutineId}task${task.TaskId}`}
+                                 className="taskDescription"
+                              >
                                  <img src={task.IconPath} height="50px" className="pe-4" />
                                  {task.TaskDescription}
                               </label>
