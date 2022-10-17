@@ -23,7 +23,7 @@ export const Routine = (props) => {
 
    return (
       <Row className="justify-content-center mb-5">
-         <Col xs={7} className="bg-wintergreen-dream routine-box p-3">
+         <Col xs={8} className="bg-wintergreen-dream routine-box p-3">
             <Row className="justify-content-between p-3" onClick={() => setExpanded(!expanded)}>
                <Col xs="auto">
                   <Row>

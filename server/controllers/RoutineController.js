@@ -5,21 +5,15 @@ export const routinesRouter = express.Router();
 
 const routinesForPersonController = async (req, res) => {
    const { personId, hour, isSchoolDay } = req.params;
+   const schoolDay = parseInt(isSchoolDay);
    try {
-      const routines = await db
-         .select("*")
-         .from("routine")
-         .join("personRoutine", "routine.RoutineId", "personRoutine.RoutineId")
-         .where("personRoutine.PersonId", personId)
-         .andWhere(function () {
-            this.where("routine.ActiveOnNonSchoolDays", true).orWhere(
-               "routine.ActiveOnNonSchoolDays",
-               "<>",
-               isSchoolDay
-            );
-         })
-         .andWhere("routine.StartHour", "<=", hour)
-         .andWhere("routine.EndHour", ">", hour);
+      const routines = await db.raw(`SELECT * FROM routine r
+         JOIN personRoutine pr ON r.RoutineId = pr.RoutineId
+         WHERE pr.PersonId = ${personId}
+         AND ((r.ActiveOnSchoolDays = 1 AND ${isSchoolDay} = 1)
+            OR (r.ActiveOnNonSchoolDays = 1 AND ${isSchoolDay} = 0))
+         AND r.StartHour <= ${hour}
+         AND r.EndHour > ${hour};`);
       return res.status(200).json({ routines });
    } catch (error) {
       console.log(error);

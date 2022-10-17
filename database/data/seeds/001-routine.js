@@ -6,6 +6,7 @@ export const allRoutines = [
       StartHour: 6,
       EndHour: 12,
       IconPath: "./resources/Icons/alarm-clock.png",
+      ActiveOnSchoolDays: true,
       ActiveOnNonSchoolDays: false,
       Completed: false
    },
@@ -16,6 +17,7 @@ export const allRoutines = [
       StartHour: 12,
       EndHour: 23,
       IconPath: "./resources/Icons/after-school.png",
+      ActiveOnSchoolDays: true,
       ActiveOnNonSchoolDays: false,
       Completed: false
    },
@@ -26,6 +28,7 @@ export const allRoutines = [
       StartHour: 20,
       EndHour: 24,
       IconPath: "./resources/Icons/bedtime.png",
+      ActiveOnSchoolDays: true,
       ActiveOnNonSchoolDays: true,
       Completed: false
    },
@@ -36,6 +39,7 @@ export const allRoutines = [
       StartHour: 6,
       EndHour: 12,
       IconPath: "./resources/Icons/morning.png",
+      ActiveOnSchoolDays: false,
       ActiveOnNonSchoolDays: true,
       Completed: false
    },
@@ -46,6 +50,7 @@ export const allRoutines = [
       StartHour: 6,
       EndHour: 12,
       IconPath: "./resources/Icons/alarm-clock.png",
+      ActiveOnSchoolDays: true,
       ActiveOnNonSchoolDays: false,
       Completed: false
    },
@@ -56,6 +61,7 @@ export const allRoutines = [
       StartHour: 12,
       EndHour: 23,
       IconPath: "./resources/Icons/after-school.png",
+      ActiveOnSchoolDays: true,
       ActiveOnNonSchoolDays: false,
       Completed: false
    },
@@ -66,6 +72,7 @@ export const allRoutines = [
       StartHour: 20,
       EndHour: 24,
       IconPath: "./resources/Icons/bedtime.png",
+      ActiveOnSchoolDays: true,
       ActiveOnNonSchoolDays: true,
       Completed: false
    },
@@ -76,6 +83,7 @@ export const allRoutines = [
       StartHour: 6,
       EndHour: 12,
       IconPath: "./resources/Icons/morning.png",
+      ActiveOnSchoolDays: false,
       ActiveOnNonSchoolDays: true,
       Completed: false
    },
@@ -86,6 +94,7 @@ export const allRoutines = [
       StartHour: 6,
       EndHour: 12,
       IconPath: "./resources/Icons/alarm-clock.png",
+      ActiveOnSchoolDays: true,
       ActiveOnNonSchoolDays: false,
       Completed: false
    },
@@ -96,6 +105,7 @@ export const allRoutines = [
       StartHour: 12,
       EndHour: 23,
       IconPath: "./resources/Icons/after-school.png",
+      ActiveOnSchoolDays: true,
       ActiveOnNonSchoolDays: false,
       Completed: false
    },
@@ -106,6 +116,7 @@ export const allRoutines = [
       StartHour: 20,
       EndHour: 24,
       IconPath: "./resources/Icons/bedtime.png",
+      ActiveOnSchoolDays: true,
       ActiveOnNonSchoolDays: true,
       Completed: false
    },
@@ -116,6 +127,7 @@ export const allRoutines = [
       StartHour: 6,
       EndHour: 12,
       IconPath: "./resources/Icons/morning.png",
+      ActiveOnSchoolDays: false,
       ActiveOnNonSchoolDays: true,
       Completed: false
    },
@@ -126,6 +138,7 @@ export const allRoutines = [
       StartHour: 6,
       EndHour: 12,
       IconPath: "./resources/Icons/alarm-clock.png",
+      ActiveOnSchoolDays: true,
       ActiveOnNonSchoolDays: false,
       Completed: false
    },
@@ -136,6 +149,7 @@ export const allRoutines = [
       StartHour: 12,
       EndHour: 23,
       IconPath: "./resources/Icons/after-school.png",
+      ActiveOnSchoolDays: true,
       ActiveOnNonSchoolDays: false,
       Completed: false
    },
@@ -146,6 +160,7 @@ export const allRoutines = [
       StartHour: 20,
       EndHour: 24,
       IconPath: "./resources/Icons/bedtime.png",
+      ActiveOnSchoolDays: true,
       ActiveOnNonSchoolDays: true,
       Completed: false
    },
@@ -156,6 +171,7 @@ export const allRoutines = [
       StartHour: 6,
       EndHour: 12,
       IconPath: "./resources/Icons/morning.png",
+      ActiveOnSchoolDays: false,
       ActiveOnNonSchoolDays: true,
       Completed: false
    }

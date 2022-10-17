@@ -93,6 +93,26 @@ export const allTasks = [
       TaskId: 18,
       TaskDescription: "Put on Jammies",
       IconPath: "./resources/Icons/pajamas.png"
+   },
+   {
+      TaskId: 19,
+      TaskDescription: "Put Jammies in Laundry or on Hook",
+      IconPath: "./resources/Icons/dirty-laundry.png"
+   },
+   {
+      TaskId: 20,
+      TaskDescription: "Throw Away Pull-Up",
+      IconPath: "./resources/Icons/pull-up.png"
+   },
+   {
+      TaskId: 21,
+      TaskDescription: "Put Clothes in Laundry or On Hook",
+      IconPath: "./resources/Icons/dirty-laundry.png"
+   },
+   {
+      TaskId: 22,
+      TaskDescription: "Put on Pull-Up",
+      IconPath: "./resources/Icons/pull-up.png"
    }
 ];
 

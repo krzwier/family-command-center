@@ -9,7 +9,15 @@ export const allRoutineTasks = [
    },
    {
       RoutineId: 0,
+      TaskId: 19
+   },
+   {
+      RoutineId: 0,
       TaskId: 2
+   },
+   {
+      RoutineId: 0,
+      TaskId: 7
    },
    {
       RoutineId: 0,
@@ -21,15 +29,11 @@ export const allRoutineTasks = [
    },
    {
       RoutineId: 0,
-      TaskId: 6
-   },
-   {
-      RoutineId: 0,
-      TaskId: 7
-   },
-   {
-      RoutineId: 0,
       TaskId: 8
+   },
+   {
+      RoutineId: 1,
+      TaskId: 17
    },
    {
       RoutineId: 1,
@@ -38,10 +42,6 @@ export const allRoutineTasks = [
    {
       RoutineId: 1,
       TaskId: 15
-   },
-   {
-      RoutineId: 1,
-      TaskId: 17
    },
    {
       RoutineId: 1,
@@ -60,6 +60,10 @@ export const allRoutineTasks = [
       TaskId: 18
    },
    {
+      RoutineId: 2,
+      TaskId: 21
+   },
+   {
       RoutineId: 3,
       TaskId: 0
    },
@@ -69,8 +73,13 @@ export const allRoutineTasks = [
    },
    {
       RoutineId: 3,
+      TaskId: 19
+   },
+   {
+      RoutineId: 3,
       TaskId: 2
    },
+
    {
       RoutineId: 3,
       TaskId: 7
@@ -85,7 +94,15 @@ export const allRoutineTasks = [
    },
    {
       RoutineId: 4,
+      TaskId: 19
+   },
+   {
+      RoutineId: 4,
       TaskId: 2
+   },
+   {
+      RoutineId: 4,
+      TaskId: 7
    },
    {
       RoutineId: 4,
@@ -100,40 +117,32 @@ export const allRoutineTasks = [
       TaskId: 6
    },
    {
-      RoutineId: 4,
-      TaskId: 7
-   },
-   {
-      RoutineId: 4,
-      TaskId: 8
-   },
-   {
       RoutineId: 5,
       TaskId: 10
-   },
-   {
-      RoutineId: 5,
-      TaskId: 15
-   },
-   {
-      RoutineId: 5,
-      TaskId: 17
    },
    {
       RoutineId: 5,
       TaskId: 16
    },
    {
+      RoutineId: 5,
+      TaskId: 9
+   },
+   {
+      RoutineId: 5,
+      TaskId: 15
+   },
+   {
       RoutineId: 6,
       TaskId: 0
    },
    {
       RoutineId: 6,
-      TaskId: 3
+      TaskId: 18
    },
    {
       RoutineId: 6,
-      TaskId: 18
+      TaskId: 21
    },
    {
       RoutineId: 7,
@@ -142,6 +151,10 @@ export const allRoutineTasks = [
    {
       RoutineId: 7,
       TaskId: 1
+   },
+   {
+      RoutineId: 7,
+      TaskId: 19
    },
    {
       RoutineId: 7,
@@ -161,7 +174,19 @@ export const allRoutineTasks = [
    },
    {
       RoutineId: 8,
+      TaskId: 19
+   },
+   {
+      RoutineId: 8,
       TaskId: 2
+   },
+   {
+      RoutineId: 8,
+      TaskId: 3
+   },
+   {
+      RoutineId: 8,
+      TaskId: 7
    },
    {
       RoutineId: 8,
@@ -176,40 +201,32 @@ export const allRoutineTasks = [
       TaskId: 6
    },
    {
-      RoutineId: 8,
-      TaskId: 7
-   },
-   {
-      RoutineId: 8,
-      TaskId: 8
-   },
-   {
       RoutineId: 9,
       TaskId: 10
-   },
-   {
-      RoutineId: 9,
-      TaskId: 15
-   },
-   {
-      RoutineId: 9,
-      TaskId: 17
    },
    {
       RoutineId: 9,
       TaskId: 16
    },
    {
+      RoutineId: 9,
+      TaskId: 9
+   },
+   {
+      RoutineId: 9,
+      TaskId: 15
+   },
+   {
       RoutineId: 10,
       TaskId: 0
    },
    {
       RoutineId: 10,
-      TaskId: 3
+      TaskId: 18
    },
    {
       RoutineId: 10,
-      TaskId: 18
+      TaskId: 21
    },
    {
       RoutineId: 11,
@@ -221,7 +238,15 @@ export const allRoutineTasks = [
    },
    {
       RoutineId: 11,
+      TaskId: 19
+   },
+   {
+      RoutineId: 11,
       TaskId: 2
+   },
+   {
+      RoutineId: 11,
+      TaskId: 3
    },
    {
       RoutineId: 11,
@@ -237,7 +262,23 @@ export const allRoutineTasks = [
    },
    {
       RoutineId: 12,
+      TaskId: 20
+   },
+   {
+      RoutineId: 12,
+      TaskId: 19
+   },
+   {
+      RoutineId: 12,
+      TaskId: 14
+   },
+   {
+      RoutineId: 12,
       TaskId: 2
+   },
+   {
+      RoutineId: 12,
+      TaskId: 7
    },
    {
       RoutineId: 12,
@@ -249,15 +290,11 @@ export const allRoutineTasks = [
    },
    {
       RoutineId: 12,
-      TaskId: 6
-   },
-   {
-      RoutineId: 12,
-      TaskId: 7
-   },
-   {
-      RoutineId: 12,
       TaskId: 8
+   },
+   {
+      RoutineId: 12,
+      TaskId: 6
    },
    {
       RoutineId: 13,
@@ -265,15 +302,15 @@ export const allRoutineTasks = [
    },
    {
       RoutineId: 13,
-      TaskId: 15
-   },
-   {
-      RoutineId: 13,
-      TaskId: 17
-   },
-   {
-      RoutineId: 13,
       TaskId: 16
+   },
+   {
+      RoutineId: 13,
+      TaskId: 9
+   },
+   {
+      RoutineId: 13,
+      TaskId: 15
    },
    {
       RoutineId: 14,
@@ -281,11 +318,15 @@ export const allRoutineTasks = [
    },
    {
       RoutineId: 14,
-      TaskId: 3
+      TaskId: 22
    },
    {
       RoutineId: 14,
       TaskId: 18
+   },
+   {
+      RoutineId: 14,
+      TaskId: 21
    },
    {
       RoutineId: 15,
@@ -294,6 +335,14 @@ export const allRoutineTasks = [
    {
       RoutineId: 15,
       TaskId: 1
+   },
+   {
+      RoutineId: 15,
+      TaskId: 19
+   },
+   {
+      RoutineId: 15,
+      TaskId: 14
    },
    {
       RoutineId: 15,
