@@ -26,11 +26,8 @@ const routinesForPersonController = async (req, res) => {
 const completeRoutineController = async (req, res) => {
    const { routineId, isComplete } = req.params;
    const status = parseInt(isComplete);
-   console.log(status);
    try {
-      const returnMessage = await db("routine")
-         .where("RoutineId", routineId)
-         .update("Completed", status);
+      await db("routine").where("RoutineId", routineId).update("Completed", status);
       res.status(200).send(
          `Status of routine ${routineId} has been saved as ${
             status === 1 ? "completed" : "incomplete"
@@ -44,6 +41,17 @@ const completeRoutineController = async (req, res) => {
    }
 };
 
+const resetRoutinesController = async (req, res) => {
+   try {
+      await db.raw("UPDATE routine SET Completed = 0;");
+      console.log("All routines successfully reset to incomplete.");
+      res.status(200).send("All routines successfully reset to incomplete.");
+   } catch (error) {
+      console.log(`Error resetting routines: ${error.stack}`);
+      res.status(500).json({ error: `Error resetting routines: ${error.stack}` });
+   }
+};
+
 routinesRouter.get(
    "/person=:personId,hour=:hour,isSchoolDay=:isSchoolDay",
    routinesForPersonController
@@ -53,3 +61,5 @@ routinesRouter.get(
    "/saveCompletion/routineId=:routineId,isComplete=:isComplete",
    completeRoutineController
 );
+
+routinesRouter.get("/reset", resetRoutinesController);
