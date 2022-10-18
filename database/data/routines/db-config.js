@@ -1,5 +1,5 @@
 import knex from "knex";
-import config from "../knexfile.js";
+import config from "./knexfile.js";
 
 let db = null;
 if (process.env.NODE_ENV === "test") {
