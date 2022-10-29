@@ -44,11 +44,15 @@ const completeRoutineController = async (req, res) => {
 const resetRoutinesController = async (req, res) => {
    try {
       await db.raw("UPDATE routine SET Completed = 0;");
-      console.log("All routines successfully reset to incomplete.");
-      res.status(200).send("All routines successfully reset to incomplete.");
+      console.log(`${Date()}: All routines successfully reset to incomplete.
+`);
+      res.status(200).send(`${Date()}: All routines successfully reset to incomplete.
+`);
    } catch (error) {
-      console.log(`Error resetting routines: ${error.stack}`);
-      res.status(500).json({ error: `Error resetting routines: ${error.stack}` });
+      console.log(`${Date()}: Error resetting routines: ${error.stack}
+`);
+      res.status(500).send(`${Date()}: Error resetting routines: ${error.stack}
+`);
    }
 };
 
