@@ -113,6 +113,31 @@ export const allTasks = [
       TaskId: 22,
       TaskDescription: "Put on Pull-Up",
       IconPath: "./resources/Icons/pull-up.png"
+   },
+   {
+      TaskId: 23,
+      TaskDescription: "Pack PE Clothes",
+      IconPath: "./resources/Icons/pe-clothes.png"
+   },
+   {
+      TaskId: 24,
+      TaskDescription: "Practice Trumpet",
+      IconPath: "./resources/Icons/trumpet.png"
+   },
+   {
+      TaskId: 25,
+      TaskDescription: "Brush Hair",
+      IconPath: "./resources/Icons/hairbrush.png"
+   },
+   {
+      TaskId: 26,
+      TaskDescription: "Fluoride",
+      IconPath: "./resources/Icons/fluoride.png"
+   },
+   {
+      TaskId: 27,
+      TaskDescription: "Shower",
+      IconPath: "./resources/Icons/shower.png"
    }
 ];
 
