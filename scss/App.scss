@@ -1,6 +1,21 @@
 @use "sass:map";
 
 $theme-colors: (
+   "pink-dark": #a63a65,
+   "pink-medium": #d07699,
+   "pink-light": #efd1dd,
+   "teal-dark": #317b7b,
+   "teal-medium": #50b9b9,
+   "teal-light": #a7dcdc,
+   "orange-dark": #bb5c2d,
+   "orange-medium": #d7845b,
+   "orange-light": #ebc2ad,
+   "purple-dark": #8c5488,
+   "purple-medium": #ab73a7,
+   "purple-light": #d9bfd7,
+   "blue-dark": #4d6293,
+   "blue-medium": #6c81b2,
+   "blue-light": #a1aece,
    "mint-cream": #f6fff8,
    //    "cambridge-blue": #a4c3b2,
    "light-cyan": #cce3de,
@@ -15,11 +30,6 @@ $font-size-base: 1.25rem;
 
 /* import bootstrap to set changes */
 @import "../node_modules/bootstrap/scss/bootstrap";
-
-// input.check-box {
-//    width: 32px;
-//    height: 32px;
-// }
 
 .full-screen {
    height: 100vh;
@@ -39,18 +49,23 @@ $font-size-base: 1.25rem;
    border-bottom-right-radius: 0;
    border-bottom-left-radius: 30px;
    border-top-left-radius: 30px;
-}
-.nav-pills .nav-link.active {
-   background: #cce3de;
+   &.nav-pink.active {
+      background-color: map.get($theme-colors, "pink-light");
+   }
+   &.nav-teal.active {
+      background-color: map.get($theme-colors, "teal-light");
+   }
+   &.nav-orange.active {
+      background-color: map.get($theme-colors, "orange-light");
+   }
+   &.nav-purple.active {
+      background-color: map.get($theme-colors, "purple-light");
+   }
+   &.nav-blue.active {
+      background-color: map.get($theme-colors, "blue-light");
+   }
 }
 
-// body {
-//    font-size: 14px;
-//    line-height: 1.8;
-//    font-weight: normal;
-//    background: #fafafa;
-//    color: lighten($black, 50%);
-// }
 a {
    transition: 0.3s all ease;
    color: $primary;
@@ -79,7 +94,6 @@ button {
 }
 
 .wrap {
-   // border: 1px solid rgba(0,0,0,.1);
    padding: 30px;
    background: $primary;
    border-radius: 4px;
@@ -113,9 +127,7 @@ button {
       .taskDescription {
          display: inline-block;
          background-color: map.get($theme-colors, "mint-cream");
-         // border: 1px solid rgba(0, 0, 0,.1);
          color: map.get($theme-colors, "dark-gray");
-
          border-radius: 4px;
          white-space: nowrap;
          margin: 0 0 10px 0;

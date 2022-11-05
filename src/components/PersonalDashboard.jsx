@@ -9,7 +9,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
 export const PersonalDashboard = (props) => {
-   const { personId } = props;
+   const { personId, color } = props;
    const person = usePerson(personId);
    const moneyBalance = useMoney(personId);
    const { pointBalance, incrementPointBalance, decrementPointBalance, markRoutineCompletion } =
@@ -37,7 +37,7 @@ export const PersonalDashboard = (props) => {
                ) : (
                   <Col
                      xs="auto"
-                     className="tracker d-flex flex-row py-3 bg-purple align-items-center justify-content-center"
+                     className={`tracker d-flex flex-row py-3 bg-${color}-dark align-items-center justify-content-center`}
                   >
                      <img src="./resources/Icons/points.png" width="80px" />
                      <h4 className="text-light-yellow m-0">{pointBalance}</h4>
@@ -48,7 +48,7 @@ export const PersonalDashboard = (props) => {
                ) : (
                   <Col
                      xs="auto"
-                     className="tracker d-flex flex-row bg-wintergreen-dream align-items-center justify-content-center"
+                     className="tracker d-flex flex-row bg-dark-gray align-items-center justify-content-center"
                   >
                      <img src="./resources/Icons/money.png" width="80px" />
                      <h4 className="text-light-yellow ps-3 m-0">{`\$${moneyBalance.toFixed(
