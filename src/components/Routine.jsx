@@ -6,7 +6,7 @@ import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
 
 export const Routine = (props) => {
-   const { routine, incrementPointBalance, decrementPointBalance } = props;
+   const { routine, color, incrementPointBalance, decrementPointBalance } = props;
    const { tasks, toggleTaskCompletion, listIsComplete } = useTasks(
       routine.RoutineId,
       incrementPointBalance,
@@ -23,7 +23,7 @@ export const Routine = (props) => {
 
    return (
       <Row className="justify-content-center mb-5">
-         <Col xs={8} className="bg-wintergreen-dream routine-box p-3">
+         <Col xs={8} className={`bg-${color}-dark routine-box p-3`}>
             <Row className="justify-content-between p-3" onClick={() => setExpanded(!expanded)}>
                <Col xs="auto">
                   <Row>
@@ -39,15 +39,9 @@ export const Routine = (props) => {
                </Col>
                <Col xs="auto">
                   {listIsComplete ? (
-                     <FontAwesomeIcon
-                        className="display-6 text-light-yellow pt-1"
-                        icon={faCircleCheck}
-                     />
+                     <FontAwesomeIcon className="display-6 text-white pt-1" icon={faCircleCheck} />
                   ) : (
-                     <FontAwesomeIcon
-                        className="display-6 text-light-yellow pt-1"
-                        icon={faCircle}
-                     />
+                     <FontAwesomeIcon className="display-6 text-white pt-1" icon={faCircle} />
                   )}
                </Col>
             </Row>

@@ -10,12 +10,12 @@ $theme-colors: (
    "orange-dark": #bb5c2d,
    "orange-medium": #d7845b,
    "orange-light": #ebc2ad,
-   "purple-dark": #8c5488,
-   "purple-medium": #ab73a7,
-   "purple-light": #d9bfd7,
-   "blue-dark": #4d6293,
-   "blue-medium": #6c81b2,
-   "blue-light": #a1aece,
+   "purple-dark": #663f76,
+   "purple-medium": #9f6db0,
+   "purple-light": #c1a2cd,
+   "blue-dark": #0d40bf,
+   "blue-medium": #4073f2,
+   "blue-light": #8dabf7,
    "mint-cream": #f6fff8,
    //    "cambridge-blue": #a4c3b2,
    "light-cyan": #cce3de,
@@ -126,7 +126,7 @@ button {
       display: block;
       .taskDescription {
          display: inline-block;
-         background-color: map.get($theme-colors, "mint-cream");
+         background-color: white;
          color: map.get($theme-colors, "dark-gray");
          border-radius: 4px;
          white-space: nowrap;
@@ -171,7 +171,7 @@ button {
 .ks-cboxtags .task input[type="checkbox"]:checked + .taskDescription::before {
    content: "\f058";
    transition: transform 0.3s ease-in-out;
-   color: map.get($theme-colors, "purple");
+   color: map.get($theme-colors, "purple-dark");
 }
 
 .ks-cboxtags .task input[type="checkbox"]:checked + .taskDescription {

@@ -15,8 +15,6 @@ export const PersonalDashboard = (props) => {
    const { pointBalance, incrementPointBalance, decrementPointBalance, markRoutineCompletion } =
       usePoints(personId);
    const { date, hour, isSchoolDay } = useDateTime();
-   //    const [date, setDate] = useState(new Date());
-   //    const [hour, setHour] = useState(0);
 
    return (
       <>
@@ -26,6 +24,7 @@ export const PersonalDashboard = (props) => {
             <RoutineList
                key={personId}
                personId={personId}
+               color={color}
                hour={hour}
                isSchoolDay={isSchoolDay}
                incrementPointBalance={incrementPointBalance}
@@ -40,7 +39,7 @@ export const PersonalDashboard = (props) => {
                      className={`tracker d-flex flex-row py-3 bg-${color}-dark align-items-center justify-content-center`}
                   >
                      <img src="./resources/Icons/points.png" width="80px" />
-                     <h4 className="text-light-yellow m-0">{pointBalance}</h4>
+                     <h4 className={`text-white m-0`}>{pointBalance}</h4>
                   </Col>
                )}
                {moneyBalance === "no account" ? (
@@ -51,9 +50,7 @@ export const PersonalDashboard = (props) => {
                      className="tracker d-flex flex-row bg-dark-gray align-items-center justify-content-center"
                   >
                      <img src="./resources/Icons/money.png" width="80px" />
-                     <h4 className="text-light-yellow ps-3 m-0">{`\$${moneyBalance.toFixed(
-                        2
-                     )}`}</h4>
+                     <h4 className={`text-white ps-3 m-0`}>{`\$${moneyBalance.toFixed(2)}`}</h4>
                   </Col>
                )}
             </Row>
