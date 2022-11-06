@@ -7,9 +7,9 @@ $theme-colors: (
    "teal-dark": #317b7b,
    "teal-medium": #50b9b9,
    "teal-light": #a7dcdc,
-   "orange-dark": #bb5c2d,
-   "orange-medium": #d7845b,
-   "orange-light": #ebc2ad,
+   "green-dark": #0b9854,
+   "green-medium": #40f29c,
+   "green-light": #96f7c8,
    "purple-dark": #663f76,
    "purple-medium": #9f6db0,
    "purple-light": #c1a2cd,
@@ -55,8 +55,8 @@ $font-size-base: 1.25rem;
    &.nav-teal.active {
       background-color: map.get($theme-colors, "teal-light");
    }
-   &.nav-orange.active {
-      background-color: map.get($theme-colors, "orange-light");
+   &.nav-green.active {
+      background-color: map.get($theme-colors, "green-light");
    }
    &.nav-purple.active {
       background-color: map.get($theme-colors, "purple-light");

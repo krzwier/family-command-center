@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export const TabContainer = () => {
    const persons = usePersons();
-   const colors = ["pink", "teal", "orange", "purple", "blue"];
+   const colors = ["pink", "teal", "green", "purple", "blue"];
    const [color, setColor] = useState("pink");
 
    return (
