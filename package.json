@@ -8,7 +8,8 @@
       "server": "nodemon index.js",
       "start": "react-scripts start",
       "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch --env=jsdom",
-      "sass": "sass --watch scss/App.scss src/App.css"
+      "sass": "sass --watch scss/App.scss src/App.css",
+      "postinstall": "patch-package"
    },
    "dependencies": {
       "@fortawesome/fontawesome-svg-core": "^6.2.0",
@@ -21,12 +22,13 @@
       "knex": "^2.2.0",
       "react": "^17.0.2",
       "react-bootstrap": "^2.5.0",
+      "react-dnd": "^16.0.1",
       "react-dom": "^17.0.2",
       "sqlite3": "^5.0.11"
    },
    "devDependencies": {
-      "@babel/core": "^7.18.13",
-      "@babel/preset-env": "^7.19.3",
+      "@babel/core": "^7.20.2",
+      "@babel/preset-react": "^7.18.6",
       "@jest-mock/express": "^2.0.1",
       "@testing-library/react-hooks": "^8.0.1",
       "babel-jest": "^29.0.2",
@@ -36,6 +38,7 @@
       "jest-fetch-mock": "^3.0.3",
       "node-mocks-http": "^1.11.0",
       "nodemon": "^2.0.19",
+      "patch-package": "^6.5.0",
       "react-scripts": "^5.0.1",
       "react-test-renderer": "^17.0.2",
       "sass": "^1.54.9"

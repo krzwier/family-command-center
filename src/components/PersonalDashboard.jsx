@@ -6,6 +6,7 @@ import { DateTime } from "./DateTime";
 import { Greeting } from "./Greeting";
 import { RoutineList } from "./RoutineList";
 import { Container, Row, Col } from "react-bootstrap";
+import { RewardPanel } from "./RewardPanel";
 import { useState, useEffect } from "react";
 
 export const PersonalDashboard = (props) => {
@@ -15,6 +16,10 @@ export const PersonalDashboard = (props) => {
    const { pointBalance, incrementPointBalance, decrementPointBalance, markRoutineCompletion } =
       usePoints(personId);
    const { date, hour, isSchoolDay } = useDateTime();
+   const [showRewardPanel, setShowRewardPanel] = useState(false);
+
+   const handleCloseRewardPanel = () => setShowRewardPanel(false);
+   const handleShowRewardPanel = () => setShowRewardPanel(true);
 
    return (
       <>
@@ -37,6 +42,7 @@ export const PersonalDashboard = (props) => {
                   <Col
                      xs="auto"
                      className={`tracker d-flex flex-row py-3 bg-${color}-dark align-items-center justify-content-center`}
+                     onClick={() => setShowRewardPanel(!showRewardPanel)}
                   >
                      <img src="./resources/Icons/points.png" width="80px" />
                      <h4 className={`text-white m-0`}>{pointBalance}</h4>
@@ -54,6 +60,11 @@ export const PersonalDashboard = (props) => {
                   </Col>
                )}
             </Row>
+            <RewardPanel
+               color={color}
+               show={showRewardPanel}
+               handleClose={handleCloseRewardPanel}
+            />
          </Container>
       </>
    );
