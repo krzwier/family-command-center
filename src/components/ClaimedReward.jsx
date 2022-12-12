@@ -2,10 +2,10 @@ import { Alert, Row, Col } from "react-bootstrap";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "../ItemTypes";
 
-export const AvailableReward = (props) => {
+export const ClaimedReward = (props) => {
    const { color, dollar, quantity, description, points } = props;
    const [{ opacity }, drag] = useDrag(() => ({
-      type: ItemTypes.AVAILABLE_REWARD,
+      type: ItemTypes.CLAIMED_REWARD,
       item: { dollar, quantity, description, points },
       collect: (monitor) => ({
          opacity: monitor.isDragging() ? 0.4 : 1
@@ -20,7 +20,7 @@ export const AvailableReward = (props) => {
             </Col>
             <Col xs={7} className="my-auto">
                <p className="m-0 text-white">
-                  {dollar ? `\$${quantity} ${description}` : `${description}`}
+                  {dollar ? `\$${quantity} ${description}` : `${description} (x${quantity})`}
                </p>
             </Col>
             <Col

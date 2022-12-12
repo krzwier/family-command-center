@@ -1,12 +1,13 @@
 import { useDrop } from "react-dnd";
-import { AvailableReward } from "./AvailableReward";
+import { ClaimedReward } from "./ClaimedReward";
 import { ItemTypes } from "../ItemTypes";
 import { Card } from "react-bootstrap";
 
-export const AvailableRewardBoard = (props) => {
-   const { onDrop, color, availableRewards } = props;
+export const ClaimedRewardBoard = (props) => {
+   const { color, onDrop, claimedRewards } = props;
+
    const [{ isOver, canDrop }, drop] = useDrop({
-      accept: ItemTypes.CLAIMED_REWARD,
+      accept: ItemTypes.AVAILABLE_REWARD,
       drop: onDrop,
       collect: (monitor) => ({
          isOver: monitor.isOver(),
@@ -15,11 +16,11 @@ export const AvailableRewardBoard = (props) => {
    });
 
    return (
-      <Card ref={drop} className={`mx-2 mb-5 p-2 bg-${color}-light`}>
-         <Card.Title className="p-3">Available Rewards</Card.Title>
+      <Card ref={drop} className={`mx-2 p-2 bg-${color}-light`}>
+         <Card.Title className="p-3">Claimed Rewards</Card.Title>
          <Card.Body>
-            {availableRewards.map((reward, index) => (
-               <AvailableReward
+            {claimedRewards.map((reward, index) => (
+               <ClaimedReward
                   key={index}
                   color={color}
                   dollar={reward.dollar}

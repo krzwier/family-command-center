@@ -1,19 +1,36 @@
-import { Offcanvas, Container, Row, Col, Alert } from "react-bootstrap";
-import { AvailableReward } from "./AvailableReward";
-import { useDrop } from "react-dnd";
+import { Offcanvas, Container, Row, Col, Alert, Card } from "react-bootstrap";
 import { AvailableRewardBoard } from "./AvailableRewardBoard";
+import { ClaimedRewardBoard } from "./ClaimedRewardBoard";
 import { ItemTypes } from "../ItemTypes";
-import { useState } from "react";
+import { useState, useCallback } from "react";
+import { useRewards } from "../hooks/UseRewards";
 
 export const RewardPanel = (props) => {
-   const { color, show, handleClose } = props;
-   const [availableRewardBoardAccept, setAvailableRewardBoardAccept] = useState({
-      accept: [ItemTypes.REWARD]
-   });
+   const { personId, color, show, handleClose } = props;
+   const {
+      rewardStatus: { pointBalance, availableRewards, claimedRewards },
+      claimReward,
+      unClaimReward
+   } = useRewards(personId);
 
-   const onDrop = () => {
-      console.log("Just dropped an item");
-   };
+   //    const [availableRewards, setAvailableRewards] = useState([
+   //       { dollar: true, quantity: 5, description: "Arcade Money", points: 50 }
+   //    ]);
+   //    const [claimedRewards, setClaimedRewards] = useState([]);
+
+   const onAvailableDrop = useCallback(
+      (reward) => {
+         unClaimReward(reward);
+      },
+      [unClaimReward]
+   );
+
+   const onClaimDrop = useCallback(
+      (reward) => {
+         claimReward(reward);
+      },
+      [claimRewards]
+   );
 
    return (
       <Offcanvas
@@ -24,8 +41,8 @@ export const RewardPanel = (props) => {
       >
          <Offcanvas.Header closeButton />
 
-         <Container className="d-flex flex-column align-items-between max-height">
-            <Row className="d-flex justify-content-end">
+         <Container fluid className="d-flex flex-column align-items-between">
+            <Row className="d-flex pb-4 justify-content-end">
                <Col
                   xs="auto"
                   className="my-auto me-3 d-flex flex-row align-items-center justify-content-center"
@@ -34,12 +51,16 @@ export const RewardPanel = (props) => {
                   <h1 className="m-0">42</h1>
                </Col>
             </Row>
-            <Row className="mx-3 my-4">
-               <AvailableRewardBoard accept={availableRewardBoardAccept} onDrop={onDrop} />
-            </Row>
-            <Row className="mx-3 my-4">
-               <h2 className="ps-1 pb-4">Rewards you've claimed:</h2>
-            </Row>
+            <AvailableRewardBoard
+               onDrop={onAvailableDrop}
+               color={color}
+               availableRewards={availableRewards}
+            />
+            <ClaimedRewardBoard
+               onDrop={onClaimDrop}
+               color={color}
+               claimedRewards={claimedRewards}
+            />
          </Container>
       </Offcanvas>
    );

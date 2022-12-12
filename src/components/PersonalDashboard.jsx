@@ -8,6 +8,13 @@ import { RoutineList } from "./RoutineList";
 import { Container, Row, Col } from "react-bootstrap";
 import { RewardPanel } from "./RewardPanel";
 import { useState, useEffect } from "react";
+// // import { isTouchDevice } from "is-touch-device";
+// import { DndProvider } from "react-dnd-multi-backend";
+// import { HTML5toTouch } from "rdndmb-html5-to-touch";
+
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+// import { TouchBackend } from "react-dnd-touch-backend";
 
 export const PersonalDashboard = (props) => {
    const { personId, color } = props;
@@ -17,6 +24,7 @@ export const PersonalDashboard = (props) => {
       usePoints(personId);
    const { date, hour, isSchoolDay } = useDateTime();
    const [showRewardPanel, setShowRewardPanel] = useState(false);
+   //    const isTouchScreen = isTouchDevice ? TouchBackend : HTML5Backend;
 
    const handleCloseRewardPanel = () => setShowRewardPanel(false);
    const handleShowRewardPanel = () => setShowRewardPanel(true);
@@ -60,11 +68,14 @@ export const PersonalDashboard = (props) => {
                   </Col>
                )}
             </Row>
-            <RewardPanel
-               color={color}
-               show={showRewardPanel}
-               handleClose={handleCloseRewardPanel}
-            />
+            <DndProvider backend={HTML5Backend}>
+               <RewardPanel
+                  personId={personId}
+                  color={color}
+                  show={showRewardPanel}
+                  handleClose={handleCloseRewardPanel}
+               />
+            </DndProvider>
          </Container>
       </>
    );

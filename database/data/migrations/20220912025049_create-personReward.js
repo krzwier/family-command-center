@@ -1,5 +1,6 @@
 export const up = (knex) => {
-   return knex.schema.createTable("reward", (tbl) => {
+   return knex.schema.createTable("personReward", (tbl) => {
+      tbl.integer("PersonId").notNullable();
       tbl.integer("RewardId").notNullable();
       tbl.boolean("Money").notNullable();
       tbl.string("Description").notNullable();
@@ -10,5 +11,5 @@ export const up = (knex) => {
 };
 
 export const down = (knex) => {
-   return knex.schema.dropTableIfExists("reward");
+   return knex.schema.dropTableIfExists("personReward");
 };

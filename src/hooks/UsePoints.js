@@ -19,7 +19,6 @@ export const usePoints = (personId) => {
    }, [personId, pointBalance, setPointBalance]);
 
    const decrementPointBalance = useCallback(() => {
-      setPointBalance(pointBalance - 1);
       fetch(`http://localhost:4001/pointBalance/decrement/personId=${personId}`, {
          method: "POST"
       })

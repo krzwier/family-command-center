@@ -1,3 +1,4 @@
 export const ItemTypes = {
-   REWARD: "reward"
+   CLAIMED_REWARD: "claimed reward",
+   AVAILABLE_REWARD: "available reward"
 };
