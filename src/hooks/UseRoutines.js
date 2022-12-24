@@ -10,8 +10,8 @@ export const useRoutines = (personId, hour, isSchoolDay) => {
 				isSchoolDay ? 1 : 0
 			}`,
 			{
-				signal: controller.signal
-			}
+				signal: controller.signal,
+			},
 		)
 			.then((response) => response.json())
 			.then((data) => setRoutines(data.routines))

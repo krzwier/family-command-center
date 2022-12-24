@@ -4,7 +4,7 @@ export const useTasks = (
 	routineId,
 	incrementPointBalance,
 	decrementPointBalance,
-	routineIsComplete
+	routineIsComplete,
 ) => {
 	const [tasks, setTasks] = useState([]);
 	const [listIsComplete, setListIsComplete] = useState(routineIsComplete);
@@ -17,8 +17,8 @@ export const useTasks = (
 				setTasks(
 					incomingTasks.map((task) => ({
 						...task,
-						completed: routineIsComplete
-					}))
+						completed: routineIsComplete,
+					})),
 				);
 			});
 	}, [routineId]);
@@ -27,7 +27,7 @@ export const useTasks = (
 		(taskId) => {
 			const updatedTasks = tasks.map((task) => ({
 				...task,
-				completed: task.TaskId === taskId ? !task.completed : task.completed
+				completed: task.TaskId === taskId ? !task.completed : task.completed,
 			}));
 			const routineComplete = updatedTasks.filter((task) => !task.completed).length === 0;
 			saveRoutineCompletion(routineComplete);
@@ -40,7 +40,7 @@ export const useTasks = (
 			setTasks(updatedTasks);
 			setListIsComplete(routineComplete);
 		},
-		[tasks, setTasks, listIsComplete, setListIsComplete]
+		[tasks, setTasks, listIsComplete, setListIsComplete],
 	);
 
 	const saveRoutineCompletion = useCallback(
@@ -50,11 +50,11 @@ export const useTasks = (
 					isCompleted ? 1 : 0
 				}`,
 				{
-					method: 'GET'
-				}
+					method: 'GET',
+				},
 			);
 		},
-		[routineId]
+		[routineId],
 	);
 
 	return { tasks, toggleTaskCompletion, listIsComplete };
