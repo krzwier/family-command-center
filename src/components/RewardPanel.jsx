@@ -1,67 +1,69 @@
-import { Offcanvas, Container, Row, Col, Alert, Card } from "react-bootstrap";
-import { AvailableRewardBoard } from "./AvailableRewardBoard";
-import { ClaimedRewardBoard } from "./ClaimedRewardBoard";
-import { ItemTypes } from "../ItemTypes";
-import { useState, useCallback } from "react";
-import { useRewards } from "../hooks/UseRewards";
+import { Offcanvas, Container, Row, Col } from 'react-bootstrap';
+import { AvailableRewardBoard } from './AvailableRewardBoard';
+import { ClaimedRewardBoard } from './ClaimedRewardBoard';
+import { useRewards } from '../hooks/UseRewards';
+import { PropTypes } from 'prop-types';
+import React, { useCallback } from 'react';
 
-export const RewardPanel = (props) => {
-   const { personId, color, show, handleClose } = props;
-   const {
-      rewardStatus: { pointBalance, availableRewards, claimedRewards },
-      claimReward,
-      unClaimReward
-   } = useRewards(personId);
+export const RewardPanel = ({ 
+	personId, 
+	color, 
+	show, 
+	handleClose, 
+}) => {
+	const { rewardStatus, claimReward, unClaimReward } = useRewards(personId);
+	const onAvailableDrop = useCallback(
+		(reward) => {
+			unClaimReward(reward);
+		},
+		[unClaimReward],
+	);
 
-   //    const [availableRewards, setAvailableRewards] = useState([
-   //       { dollar: true, quantity: 5, description: "Arcade Money", points: 50 }
-   //    ]);
-   //    const [claimedRewards, setClaimedRewards] = useState([]);
+	const onClaimDrop = useCallback(
+		(reward) => {
+			claimReward(reward);
+		},
+		[claimReward],
+	);
 
-   const onAvailableDrop = useCallback(
-      (reward) => {
-         unClaimReward(reward);
-      },
-      [unClaimReward]
-   );
+	if (!rewardStatus.personFound) {
+		return <></>;
+	}
+	return (
+		<Offcanvas
+			className={`w-50 bg-${color}-medium`}
+			show={show}
+			onHide={handleClose}
+			placement="end"
+		>
+			<Offcanvas.Header closeButton />
+			<Container className="d-flex align-items-between">
+				<Row className="d-flex pb-4 justify-content-end">
+					<Col className="my-auto col-12 me-3 d-flex flex-row align-items-center justify-content-end">
+						<img src="./resources/icons/points-dark.png" width="80px" />
+						<h1 className="m-0">{rewardStatus.pointBalance}</h1>
+					</Col>
+					<Col className="col-12 mt-4">
+						<AvailableRewardBoard
+							onDrop={onAvailableDrop}
+							color={color}
+							availableRewards={rewardStatus.availableRewards}
+						/>
+						<ClaimedRewardBoard
+							onDrop={onClaimDrop}
+							color={color}
+							claimedRewards={rewardStatus.claimedRewards}
+						/>
+					</Col>
+				</Row>
+			</Container>
+		</Offcanvas>
+	);
+};
 
-   const onClaimDrop = useCallback(
-      (reward) => {
-         claimReward(reward);
-      },
-      [claimRewards]
-   );
-
-   return (
-      <Offcanvas
-         className={`w-50 bg-${color}-medium`}
-         show={show}
-         onHide={handleClose}
-         placement="end"
-      >
-         <Offcanvas.Header closeButton />
-
-         <Container fluid className="d-flex flex-column align-items-between">
-            <Row className="d-flex pb-4 justify-content-end">
-               <Col
-                  xs="auto"
-                  className="my-auto me-3 d-flex flex-row align-items-center justify-content-center"
-               >
-                  <img src="./resources/icons/points-dark.png" width="80px" />
-                  <h1 className="m-0">42</h1>
-               </Col>
-            </Row>
-            <AvailableRewardBoard
-               onDrop={onAvailableDrop}
-               color={color}
-               availableRewards={availableRewards}
-            />
-            <ClaimedRewardBoard
-               onDrop={onClaimDrop}
-               color={color}
-               claimedRewards={claimedRewards}
-            />
-         </Container>
-      </Offcanvas>
-   );
+RewardPanel.propTypes = { 
+	personId: PropTypes.number, 
+	color: PropTypes.string, 
+	show: PropTypes.bool, 
+	handleClose: PropTypes.func, 
 };
