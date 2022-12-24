@@ -9,7 +9,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { RewardPanel } from './RewardPanel';
 import { useState, useCallback } from 'react';
 import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
+// import { HTML5Backend } from 'react-dnd-html5-backend';
+import { TouchBackend } from 'react-dnd-touch-backend';
 import { PropTypes } from 'prop-types';
 import React from 'react';
 
@@ -70,7 +71,7 @@ export const PersonalDashboard = ({ personId, color }) => {
 						</Col>
 					)}
 				</Row>
-				<DndProvider backend={HTML5Backend}>
+				<DndProvider backend={TouchBackend}>
 					<RewardPanel
 						personId={personId}
 						color={color}
