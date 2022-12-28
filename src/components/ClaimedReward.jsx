@@ -33,7 +33,7 @@ export const ClaimedReward = ({
 					xs={3}
 					className="my-auto d-flex flex-row align-items-center justify-content-center"
 				>
-					<img src="./resources/icons/points.png" width="54px" />
+					<img src="./resources/Icons/points.png" width="54px" />
 					<h5 className="m-0 text-white">{points}</h5>
 				</Col>
 			</Row>

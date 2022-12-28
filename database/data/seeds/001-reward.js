@@ -5,7 +5,7 @@ export const allRewards = [
 		Description: 'Arcade Money',
 		Quantity: 5,
 		Points: 50,
-		IconPath: './resources/Icons/arcade.png'
+		IconPath: './resources/Icons/arcade.png',
 	},
 	{
 		RewardId: 1,
@@ -13,7 +13,7 @@ export const allRewards = [
 		Description: 'Beaverdale Confections Money',
 		Quantity: 5,
 		Points: 50,
-		IconPath: './resources/Icons/candy.png'
+		IconPath: './resources/Icons/candy.png',
 	},
 	{
 		RewardId: 2,
@@ -21,7 +21,7 @@ export const allRewards = [
 		Description: 'Choose Dinner',
 		Quantity: 1,
 		Points: 50,
-		IconPath: './resources/Icons/dinner.png'
+		IconPath: './resources/Icons/dinner.png',
 	},
 	{
 		RewardId: 3,
@@ -29,8 +29,8 @@ export const allRewards = [
 		Description: 'Date with Mommy',
 		Quantity: 1,
 		Points: 100,
-		IconPath: './resources/Icons/mommy-date.png'
-	}
+		IconPath: './resources/Icons/mommy-date.png',
+	},
 ];
 
 export const seed = async (knex) => {

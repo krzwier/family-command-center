@@ -57,7 +57,7 @@ export const RewardPanel = ({
 			<Container fluid className="d-flex flex-column align-items-between" style={{ minHeight: '100%' }}>
 				<Row className="d-flex pb-4 justify-content-end" >
 					<Col className="my-auto col-12 me-3 d-flex flex-row align-items-center justify-content-end">
-						<img src="./resources/icons/points-dark.png" width="80px" />
+						<img src="./resources/Icons/points-dark.png" width="80px" />
 						<h1 className="m-0">{rewardStatus.pointBalance}</h1>
 					</Col>
 				</Row>
