@@ -16,7 +16,7 @@ export const AvailableRewardBoard = ({ onDrop, color, availableRewards } ) => {
 	});
 
 	return (
-		<Card ref={drop} className={`mx-2 mb-5 p-2 bg-${color}-light`} style={{ minHeight: '75%' }}>
+		<Card ref={drop} className={`mx-2 mb-5 p-2 bg-${color}-light`} style={{ minHeight: '65%' }}>
 			<Card.Title className="p-3">Available Rewards</Card.Title>
 			<Card.Body>
 				{availableRewards.map((reward) => (

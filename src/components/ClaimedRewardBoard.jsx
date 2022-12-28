@@ -16,7 +16,7 @@ export const ClaimedRewardBoard = ({
 	});
 
 	return (
-		<Card ref={drop} className={`mx-2 p-2 bg-${color}-light`} style={{ minHeight: '25%' }}>
+		<Card ref={drop} className={`mx-2 p-2 bg-${color}-light`} style={{ minHeight: '30%' }}>
 			<Card.Title className="p-3">Claimed Rewards</Card.Title>
 			<Card.Body>
 				{claimedRewards.map((reward) => (

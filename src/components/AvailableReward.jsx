@@ -15,8 +15,8 @@ export const AvailableReward = ({
 }) => {
 	const [, drag] = useDrag(() => ({
 		type: ItemTypes.AVAILABLE_REWARD,
-		item: { RewardId: rewardId },
-	}), [rewardId]);
+		item: { RewardId: rewardId, color, dollar, quantity, description, points, iconPath },
+	}), [rewardId, color, dollar, quantity, description,points, iconPath]);
 
 	return (
 		<Alert ref={drag} className={`bg-${color}-dark`}>

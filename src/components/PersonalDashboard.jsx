@@ -10,9 +10,25 @@ import { RewardPanel } from './RewardPanel';
 import { useState, useCallback } from 'react';
 import { DndProvider } from 'react-dnd';
 // import { HTML5Backend } from 'react-dnd-html5-backend';
+// import { usePreview } from 'react-dnd-preview';
 import { TouchBackend } from 'react-dnd-touch-backend';
 import { PropTypes } from 'prop-types';
 import React from 'react';
+// import HTML5ToTouch from '../HTML5ToTouch';
+// import { ItemTypes } from '../ItemTypes';
+// import { AvailableReward } from './AvailableReward';
+// import { ClaimedReward } from './ClaimedReward';
+
+// const RewardGhost = () => {
+// 	const { itemType, display, item } = usePreview();
+// 	if (!display) {
+// 		return null;
+// 	}
+// 	return itemType === ItemTypes.CLAIMED_REWARD 
+// 		? <ClaimedReward color={item.color} rewardId={item.RewardId} dollar={item.dollar} quantity={item.quantity} description={item.description} points={item.points} iconPath={item.iconPath} /> 
+// 		: <AvailableReward />;
+// 	// <div className="item-list__item" style={style}>{itemType}</div>;
+// };
 
 export const PersonalDashboard = ({ personId, color }) => {
 	const [showRewardPanel, setShowRewardPanel] = useState(false);
@@ -78,6 +94,7 @@ export const PersonalDashboard = ({ personId, color }) => {
 						show={showRewardPanel}
 						handleClose={handleCloseRewardPanel}
 					/>
+					{/* <RewardGhost /> */}
 				</DndProvider>
 			</Container>
 		</>
