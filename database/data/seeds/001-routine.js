@@ -8,7 +8,7 @@ export const allRoutines = [
 		IconPath: './resources/Icons/alarm-clock.png',
 		ActiveOnSchoolDays: true,
 		ActiveOnNonSchoolDays: false,
-		Completed: false
+		Completed: false,
 	},
 	{
 		RoutineId: 1,
@@ -19,7 +19,7 @@ export const allRoutines = [
 		IconPath: './resources/Icons/after-school.png',
 		ActiveOnSchoolDays: true,
 		ActiveOnNonSchoolDays: false,
-		Completed: false
+		Completed: false,
 	},
 	{
 		RoutineId: 2,
@@ -30,7 +30,7 @@ export const allRoutines = [
 		IconPath: './resources/Icons/bedtime.png',
 		ActiveOnSchoolDays: true,
 		ActiveOnNonSchoolDays: true,
-		Completed: false
+		Completed: false,
 	},
 	{
 		RoutineId: 3,
@@ -41,7 +41,7 @@ export const allRoutines = [
 		IconPath: './resources/Icons/morning.png',
 		ActiveOnSchoolDays: false,
 		ActiveOnNonSchoolDays: true,
-		Completed: false
+		Completed: false,
 	},
 	{
 		RoutineId: 4,
@@ -52,7 +52,7 @@ export const allRoutines = [
 		IconPath: './resources/Icons/alarm-clock.png',
 		ActiveOnSchoolDays: true,
 		ActiveOnNonSchoolDays: false,
-		Completed: false
+		Completed: false,
 	},
 	{
 		RoutineId: 5,
@@ -63,7 +63,7 @@ export const allRoutines = [
 		IconPath: './resources/Icons/after-school.png',
 		ActiveOnSchoolDays: true,
 		ActiveOnNonSchoolDays: false,
-		Completed: false
+		Completed: false,
 	},
 	{
 		RoutineId: 6,
@@ -74,7 +74,7 @@ export const allRoutines = [
 		IconPath: './resources/Icons/bedtime.png',
 		ActiveOnSchoolDays: true,
 		ActiveOnNonSchoolDays: true,
-		Completed: false
+		Completed: false,
 	},
 	{
 		RoutineId: 7,
@@ -85,29 +85,29 @@ export const allRoutines = [
 		IconPath: './resources/Icons/morning.png',
 		ActiveOnSchoolDays: false,
 		ActiveOnNonSchoolDays: true,
-		Completed: false
+		Completed: false,
 	},
 	{
 		RoutineId: 8,
 		RoutineName: `Ben's Before School Routine`,
 		RoutineDisplayName: 'Before-School Routine',
 		StartHour: 6,
-		EndHour: 12,
+		EndHour: 9,
 		IconPath: './resources/Icons/alarm-clock.png',
 		ActiveOnSchoolDays: true,
 		ActiveOnNonSchoolDays: false,
-		Completed: false
+		Completed: false,
 	},
 	{
 		RoutineId: 9,
-		RoutineName: `Ben's After School Routine`,
-		RoutineDisplayName: 'After-School Routine',
-		StartHour: 12,
-		EndHour: 23,
-		IconPath: './resources/Icons/after-school.png',
+		RoutineName: `Ben's School Routine`,
+		RoutineDisplayName: 'School Routine',
+		StartHour: 8,
+		EndHour: 19,
+		IconPath: './resources/Icons/school.png',
 		ActiveOnSchoolDays: true,
 		ActiveOnNonSchoolDays: false,
-		Completed: false
+		Completed: false,
 	},
 	{
 		RoutineId: 10,
@@ -118,7 +118,7 @@ export const allRoutines = [
 		IconPath: './resources/Icons/bedtime.png',
 		ActiveOnSchoolDays: true,
 		ActiveOnNonSchoolDays: true,
-		Completed: false
+		Completed: false,
 	},
 	{
 		RoutineId: 11,
@@ -129,7 +129,7 @@ export const allRoutines = [
 		IconPath: './resources/Icons/morning.png',
 		ActiveOnSchoolDays: false,
 		ActiveOnNonSchoolDays: true,
-		Completed: false
+		Completed: false,
 	},
 	{
 		RoutineId: 12,
@@ -140,7 +140,7 @@ export const allRoutines = [
 		IconPath: './resources/Icons/alarm-clock.png',
 		ActiveOnSchoolDays: true,
 		ActiveOnNonSchoolDays: false,
-		Completed: false
+		Completed: false,
 	},
 	{
 		RoutineId: 13,
@@ -151,7 +151,7 @@ export const allRoutines = [
 		IconPath: './resources/Icons/after-school.png',
 		ActiveOnSchoolDays: true,
 		ActiveOnNonSchoolDays: false,
-		Completed: false
+		Completed: false,
 	},
 	{
 		RoutineId: 14,
@@ -162,7 +162,7 @@ export const allRoutines = [
 		IconPath: './resources/Icons/bedtime.png',
 		ActiveOnSchoolDays: true,
 		ActiveOnNonSchoolDays: true,
-		Completed: false
+		Completed: false,
 	},
 	{
 		RoutineId: 15,
@@ -173,8 +173,8 @@ export const allRoutines = [
 		IconPath: './resources/Icons/morning.png',
 		ActiveOnSchoolDays: false,
 		ActiveOnNonSchoolDays: true,
-		Completed: false
-	}
+		Completed: false,
+	},
 ];
 
 export const seed = async (knex) => {
