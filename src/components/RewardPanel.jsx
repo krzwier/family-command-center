@@ -1,7 +1,6 @@
 import { Offcanvas, Container, Row, Col } from 'react-bootstrap';
 import { AvailableRewardBoard } from './AvailableRewardBoard';
 import { ClaimedRewardBoard } from './ClaimedRewardBoard';
-import { useRewards } from '../hooks/UseRewards';
 import { PropTypes } from 'prop-types';
 import React, { useCallback } from 'react';
 import { ClaimedReward } from './ClaimedReward';
@@ -14,21 +13,40 @@ export const RewardGhost = () => {
 	if (!display) {
 		return null;
 	}
-	return <div style={{ ...style, width: 'calc(50% - 90px)', opacity: '50%' }}>
-		{itemType === ItemTypes.CLAIMED_REWARD 
-			? <ClaimedReward color={item.color} rewardId={item.RewardId} dollar={item.dollar} quantity={item.quantity} description={item.description} points={item.points} iconPath={item.iconPath} /> 
-			: <AvailableReward color={item.color} rewardId={item.RewardId} dollar={item.dollar} quantity={item.quantity} description={item.description} points={item.points} iconPath={item.iconPath}/>}
-	</div>;
+	return (
+		<div style={{ ...style, width: 'calc(50% - 90px)', opacity: '50%' }}>
+			{itemType === ItemTypes.CLAIMED_REWARD 
+				? <ClaimedReward 
+					color={item.color} 
+					rewardId={item.RewardId} 
+					dollar={item.dollar} 
+					quantity={item.quantity} 
+					description={item.description} 
+					points={item.points} 
+					iconPath={item.iconPath} 
+				/> 
+				: <AvailableReward 
+					color={item.color} 
+					rewardId={item.RewardId} 
+					dollar={item.dollar} 
+					quantity={item.quantity} 
+					description={item.description} 
+					points={item.points} 
+					iconPath={item.iconPath}/>
+			}
+		</div>
+	);
 };
 
 
 export const RewardPanel = ({ 
-	personId, 
-	color, 
+	rewardStatus,
+	claimReward,
+	unClaimReward,
+	color,
 	show, 
 	handleClose, 
 }) => {
-	const { rewardStatus, claimReward, unClaimReward } = useRewards(personId);
 	const onAvailableDrop = useCallback(
 		(reward) => {
 			unClaimReward(reward);
@@ -84,7 +102,9 @@ export const RewardPanel = ({
 };
 
 RewardPanel.propTypes = { 
-	personId: PropTypes.number, 
+	rewardStatus: PropTypes.object,
+	claimReward: PropTypes.func,
+	unClaimReward: PropTypes.func,
 	color: PropTypes.string, 
 	show: PropTypes.bool, 
 	handleClose: PropTypes.func, 

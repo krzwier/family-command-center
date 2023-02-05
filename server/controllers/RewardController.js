@@ -52,9 +52,9 @@ export const claimRewardController = async (req, res) => {
 	try {
 		const statusResult = await db.transaction(async (transaction) => {
 			const result = {
-				pointBalance: 0,
-				availableRewards: [],
-				claimedRewards: [],
+				pointBalance: null,
+				availableRewards: null,
+				claimedRewards: null,
 				personFound: false,
 				success: false,
 			};
