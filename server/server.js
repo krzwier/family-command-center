@@ -6,6 +6,7 @@ import { routinesRouter } from './controllers/RoutineController.js';
 import { moneyRouter } from './controllers/MoneyController.js';
 import { pointRouter } from './controllers/PointController.js';
 import { rewardRouter } from './controllers/RewardController.js';
+import { workEventsRouter } from './controllers/WorkEventsController.js';
 
 const server = express();
 
@@ -15,7 +16,7 @@ server.get('/', (req, res) => {
 
 server.use(
 	cors({
-		origin: 'http://localhost:3000',
+		origin: ['http://localhost:3000','https://outlook.office365.com'],
 	}),
 );
 
@@ -25,5 +26,6 @@ server.use('/routines', routinesRouter);
 server.use('/moneyBalance', moneyRouter);
 server.use('/pointBalance', pointRouter);
 server.use('/rewards', rewardRouter);
+server.use('/workEvents', workEventsRouter);
 
 export default server;
