@@ -25,23 +25,11 @@ export const allRoutineTasks = [
 	},
 	{
 		RoutineId: 0,
-		TaskId: 8,
-	},
-	{
-		RoutineId: 0,
 		TaskId: 23,
 	},
 	{
 		RoutineId: 0,
 		TaskId: 5,
-	},
-	{
-		RoutineId: 1,
-		TaskId: 17,
-	},
-	{
-		RoutineId: 1,
-		TaskId: 12,
 	},
 	{
 		RoutineId: 1,
@@ -70,10 +58,6 @@ export const allRoutineTasks = [
 	{
 		RoutineId: 2,
 		TaskId: 3,
-	},
-	{
-		RoutineId: 2,
-		TaskId: 27,
 	},
 	{
 		RoutineId: 2,
@@ -132,21 +116,9 @@ export const allRoutineTasks = [
 		RoutineId: 4,
 		TaskId: 5,
 	},
-	{ 
-		RoutineId: 4,
-		TaskId: 13,
-	},
 	{
 		RoutineId: 4,
 		TaskId: 6,
-	},
-	{
-		RoutineId: 5,
-		TaskId: 12,
-	},
-	{
-		RoutineId: 5,
-		TaskId: 28,
 	},
 	{
 		RoutineId: 5,
@@ -170,6 +142,10 @@ export const allRoutineTasks = [
 	},
 	{
 		RoutineId: 6,
+		TaskId: 26,
+	},
+	{
+		RoutineId: 6,
 		TaskId: 18,
 	},
 	{
@@ -221,20 +197,40 @@ export const allRoutineTasks = [
 		TaskId: 7,
 	},
 	{
-		RoutineId: 9,
-		TaskId: 29,
+		RoutineId: 8,
+		TaskId: 4,
+	},
+	{
+		RoutineId: 8,
+		TaskId: 5,
+	},
+	{
+		RoutineId: 8,
+		TaskId: 6,
 	},
 	{
 		RoutineId: 9,
-		TaskId: 31,
+		TaskId: 10,
 	},
 	{
 		RoutineId: 9,
-		TaskId: 30,
+		TaskId: 16,
+	},
+	{
+		RoutineId: 9,
+		TaskId: 9,
+	},
+	{
+		RoutineId: 9,
+		TaskId: 15,
 	},
 	{
 		RoutineId: 10,
 		TaskId: 0,
+	},
+	{
+		RoutineId: 10,
+		TaskId: 26,
 	},
 	{
 		RoutineId: 10,
@@ -279,10 +275,6 @@ export const allRoutineTasks = [
 	{
 		RoutineId: 12,
 		TaskId: 1,
-	},
-	{
-		RoutineId: 12,
-		TaskId: 20,
 	},
 	{
 		RoutineId: 12,
@@ -320,14 +312,6 @@ export const allRoutineTasks = [
 		RoutineId: 12,
 		TaskId: 6,
 	},
-	{ 
-		RoutineId: 12,
-		TaskId: 13, 
-	},
-	{
-		RoutineId: 13,
-		TaskId: 12,
-	},
 	{
 		RoutineId: 13,
 		TaskId: 10,
@@ -340,17 +324,13 @@ export const allRoutineTasks = [
 		RoutineId: 13,
 		TaskId: 9,
 	},
-	{ 
-		RoutineId: 13,
-		TaskId: 28,
-	},
 	{
 		RoutineId: 14,
 		TaskId: 0,
 	},
 	{
 		RoutineId: 14,
-		TaskId: 22,
+		TaskId: 26,
 	},
 	{
 		RoutineId: 14,
@@ -363,10 +343,6 @@ export const allRoutineTasks = [
 	{
 		RoutineId: 15,
 		TaskId: 0,
-	},
-	{
-		RoutineId: 15,
-		TaskId: 20,
 	},
 	{
 		RoutineId: 15,
