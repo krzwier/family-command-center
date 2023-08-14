@@ -3,13 +3,14 @@ import { usePersons } from '../hooks/UsePersons';
 import { PersonalDashboard } from './PersonalDashboard';
 import React, { useState } from 'react';
 import { MainDashboard } from './MainDashboard';
+import { MainDashboard } from './MainDashboard';
 
 export const TabContainer = () => {
 	const persons = usePersons();
 	const colors = ['grey', 'teal', 'green', 'purple', 'blue'];
 	const [color, setColor] = useState('grey');
 	const [activeTab, setActiveTab] = useState(0);
- 
+
 	return (
 		<Tab.Container defaultActiveKey="Calendar">
 			<Row className="full-screen">

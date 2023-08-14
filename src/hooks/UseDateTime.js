@@ -6,6 +6,7 @@ export const useDateTime = () => {
 	useEffect(() => {
 		const timer = setInterval(() => {
 			const currentDate = new Date();
+			const currentMinute = currentDate.getMinutes();
 			const currentHour = currentDate.getHours();
 			if (currentHour !== hour) {
 				setHour(currentHour);
