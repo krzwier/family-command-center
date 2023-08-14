@@ -1,7 +1,6 @@
 import { usePerson } from '../hooks/UsePerson';
 import { useMoney } from '../hooks/UseMoney';
 import { useDateTime } from '../hooks/UseDateTime';
-import { DateTime } from './DateTime';
 import { Greeting } from './Greeting';
 import { RoutineList } from './RoutineList';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -12,7 +11,6 @@ import { TouchBackend } from 'react-dnd-touch-backend';
 import { PropTypes } from 'prop-types';
 import React from 'react';
 import { useRewards } from '../hooks/UseRewards';
-
 
 export const PersonalDashboard = ({ personId, color }) => {
 	const [showRewardPanel, setShowRewardPanel] = useState(false);
@@ -25,7 +23,7 @@ export const PersonalDashboard = ({ personId, color }) => {
 		incrementPointBalance,
 		decrementPointBalance,
 	} = useRewards(personId);
-	const { date, hour, isSchoolDay } = useDateTime();
+	const { hour, isSchoolDay } = useDateTime();
 
 	const handleCloseRewardPanel = useCallback(
 		() => setShowRewardPanel(false),
@@ -34,8 +32,10 @@ export const PersonalDashboard = ({ personId, color }) => {
 
 	return  (
 		<Container fluid>
-			<DateTime date={date} />
-			<Greeting personName={person.PersonName} date={date} />
+			{/* <DateTime hour={hour} minute={minute} /> */}
+
+			<Greeting personName={person.PersonName} hour={hour} />
+			
 			{rewardStatus.personFound && (
 				<>
 					<RoutineList

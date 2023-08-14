@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "paths": {
+          "https": [
+            "./node_modules/https-browserify"
+          ]
+        }
+    }
+}
