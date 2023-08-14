@@ -13,7 +13,7 @@ export const MainDashboard = () => {
 		setIsLoading(true);
 		fetch('http://localhost:4001/workEvents').then(() => setIsLoading(false));
         
-	}, []);
+	}, [setIsLoading]);
 
 
 	return (
@@ -32,7 +32,6 @@ export const MainDashboard = () => {
 						format: 'ics',
 					},
 				]}
-        
 				eventClick={(info) => info.jsEvent.preventDefault()}
 				initialView="timeGridWeek"
 				eventMinHeight={60}
