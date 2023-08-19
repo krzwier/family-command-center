@@ -4,3 +4,4 @@ node_modules/
 public/resources/workCalendar.ics
 cert.pem
 key.pem
+logs/
