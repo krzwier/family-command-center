@@ -1,4 +1,6 @@
 node_modules/
 .DS_Store
-database/data/family-command-center.db3
-app/.env.local
+.env.local
+public/resources/workCalendar.ics
+cert.pem
+key.pem
