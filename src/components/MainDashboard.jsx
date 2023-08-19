@@ -1,24 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import  FullCalendar from '@fullcalendar/react';
 import { DateTime } from './DateTime';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import googleCalendarPlugin from '@fullcalendar/google-calendar';
 import iCalendarPlugin from '@fullcalendar/icalendar';
-import fetch from 'node-fetch';
 
 export const MainDashboard = () => {
-	const [isLoading, setIsLoading] = useState(true);
-
-	useEffect(() => {
-		setIsLoading(true);
-		fetch('http://localhost:4001/workEvents').then(() => setIsLoading(false));
-        
-	}, [setIsLoading]);
-
-
 	return (
-		<><DateTime />
-			{!isLoading && 
+		<>
+			<DateTime />
 			<FullCalendar
 				plugins={[ timeGridPlugin, googleCalendarPlugin, iCalendarPlugin]}
 				eventSources={[
@@ -40,7 +30,6 @@ export const MainDashboard = () => {
 				themeSystem="standard"
 				weekends={true}
 			/>
-			}
 		</>
 	);
 };
