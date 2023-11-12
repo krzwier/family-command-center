@@ -106,6 +106,10 @@ export const allRoutineTasks = [
 	},
 	{
 		RoutineId: 4,
+		TaskId: 3,
+	},
+	{
+		RoutineId: 4,
 		TaskId: 7,
 	},
 	{
@@ -167,6 +171,10 @@ export const allRoutineTasks = [
 	{
 		RoutineId: 7,
 		TaskId: 2,
+	},
+	{
+		RoutineId: 7,
+		TaskId: 3,
 	},
 	{
 		RoutineId: 7,

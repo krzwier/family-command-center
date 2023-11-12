@@ -25,7 +25,7 @@ export const TabContainer = () => {
 								}}
 							>
 								<img 
-									src="./resources/icons/home-white.svg"
+									src="./resources/icons/home-white.png"
 									width="80px"
 									style={{ padding: '10px' }} />
 							</Nav.Link>

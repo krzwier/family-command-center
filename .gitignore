@@ -5,3 +5,4 @@ public/resources/workCalendar.ics
 cert.pem
 key.pem
 logs/
+database/data/family-command-center.db3
