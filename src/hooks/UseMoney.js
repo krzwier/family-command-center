@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
+import { callFunction } from '../services/CallFunction.js';
 
 export const useMoney = (personId) => {
 	const [balance, setBalance] = useState(0);
 
 	useEffect(() => {
-		fetch(`http://localhost:4001/moneyBalance/personId=${personId}`)
-			.then((response) => response.json())
-			.then(setBalance);
-	}, [personId]);
+		callFunction(`getmoneybalance/personid=${personId}`)
+			.then((data) => {
+				setBalance(data[0]?.Balance ?? 0);
+			});
+	}, [personId, setBalance]);
 
 	return balance;
 };

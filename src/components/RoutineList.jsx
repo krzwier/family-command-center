@@ -6,12 +6,11 @@ import React from 'react';
 export const RoutineList = ({ 
 	personId, 
 	color, 
-	hour, 
 	incrementPointBalance, 
 	decrementPointBalance, 
-	isSchoolDay, 
 }) => {
-	const routines = useRoutines(personId, hour, isSchoolDay);
+	const routines = useRoutines(personId);
+	console.log(routines);
 
 	return routines.map((routine) => (
 		<Routine
@@ -27,8 +26,6 @@ export const RoutineList = ({
 RoutineList.propTypes = { 
 	personId: PropTypes.number, 
 	color: PropTypes.string, 
-	hour: PropTypes.number, 
 	incrementPointBalance: PropTypes.func, 
 	decrementPointBalance: PropTypes.func, 
-	isSchoolDay: PropTypes.bool, 
 };

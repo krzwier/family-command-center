@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import  FullCalendar from '@fullcalendar/react';
 import { DateTime } from './DateTime';
@@ -16,11 +17,6 @@ export const MainDashboard = () => {
 						googleCalendarId: process.env.REACT_APP_PERSONAL_CALENDAR_ID, backgroundColor: 'purple' },
 					{ googleCalendarApiKey: process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY,
 						googleCalendarId: process.env.REACT_APP_FAMILY_CALENDAR_ID, backgroundColor: 'blue' },
-					{ 
-						url: './resources/workCalendar.ics',
-						color: 'green',
-						format: 'ics',
-					},
 				]}
 				eventClick={(info) => info.jsEvent.preventDefault()}
 				initialView="timeGridWeek"

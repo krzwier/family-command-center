@@ -15,7 +15,7 @@ export const TabContainer = () => {
 			<Row className="full-screen">
 				<Col xs="auto" className={`pe-0 bg-${color}-dark ps-4 py-3`}>
 					<Nav className="nav-pills flex-column" role="tablist">
-						<Nav.Item key={0}>
+						<Nav.Item>
 							<Nav.Link
 								className={`nav-${color}`}
 								eventKey="Calendar"
@@ -49,8 +49,8 @@ export const TabContainer = () => {
 				<Col className={`bg-${color}-light px-0`}>
 					<Tab.Content className="h-100" >
 						<Tab.Pane
-							key={-1}
-							value={-1}
+							// key={0}
+							// value={0}
 							eventKey="Calendar"
 							className="tab-pane"
 							style={{ display: activeTab === 0 ? 'block' : 'none' }}

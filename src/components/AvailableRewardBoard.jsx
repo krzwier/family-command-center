@@ -24,7 +24,7 @@ export const AvailableRewardBoard = ({ onDrop, color, availableRewards } ) => {
 						key={reward.RewardId}
 						color={color}
 						rewardId={reward.RewardId}
-						dollar={reward.Money === 1}
+						dollar={reward.Money}
 						quantity={reward.Quantity}
 						description={reward.Description}
 						points={reward.Points}

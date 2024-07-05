@@ -61,9 +61,6 @@ export const RewardPanel = ({
 		[claimReward],
 	);
 
-	if (!rewardStatus.personFound) {
-		return <></>;
-	}
 	return (<>
 		<Offcanvas
 			className={`w-50 bg-${color}-medium`}
@@ -76,7 +73,7 @@ export const RewardPanel = ({
 				<Row className="d-flex pb-4 justify-content-end" >
 					<Col className="my-auto col-12 me-3 d-flex flex-row align-items-center justify-content-end">
 						<img src="./resources/Icons/points-dark.png" width="80px" />
-						<h1 className="m-0">{rewardStatus.pointBalance}</h1>
+						<h1 className="m-0">{rewardStatus.PointBalance}</h1>
 					</Col>
 				</Row>
 				<Row className="d-flex" style={{ minHeight: '90%' }}>
@@ -84,12 +81,12 @@ export const RewardPanel = ({
 						<AvailableRewardBoard
 							onDrop={onAvailableDrop}
 							color={color}
-							availableRewards={rewardStatus.availableRewards}
+							availableRewards={rewardStatus.AvailableRewards}
 						/>
 						<ClaimedRewardBoard
 							onDrop={onClaimDrop}
 							color={color}
-							claimedRewards={rewardStatus.claimedRewards}
+							claimedRewards={rewardStatus.ClaimedRewards}
 						/>
 					</Col>
 				</Row>

@@ -23,7 +23,7 @@ export const PersonalDashboard = ({ personId, color }) => {
 		incrementPointBalance,
 		decrementPointBalance,
 	} = useRewards(personId);
-	const { hour, isSchoolDay } = useDateTime();
+	const { hour } = useDateTime();
 
 	const handleCloseRewardPanel = useCallback(
 		() => setShowRewardPanel(false),
@@ -32,52 +32,43 @@ export const PersonalDashboard = ({ personId, color }) => {
 
 	return  (
 		<Container fluid>
-			{/* <DateTime hour={hour} minute={minute} /> */}
-
 			<Greeting personName={person.PersonName} hour={hour} />
-			
-			{rewardStatus.personFound && (
-				<>
-					<RoutineList
-						key={personId}
-						personId={personId}
-						color={color}
-						hour={hour}
-						isSchoolDay={isSchoolDay}
-						incrementPointBalance={incrementPointBalance}
-						decrementPointBalance={decrementPointBalance}
-					/>
-					<Row className="fixed-bottom justify-content-end">
-						<Col
-							xs="auto"
-							className={`tracker d-flex flex-row py-3 bg-${color}-dark align-items-center justify-content-center`}
-							onClick={() => setShowRewardPanel(!showRewardPanel)}
-						>
-							<img src="./resources/Icons/points.png" width="80px" />
-							<h4 className={`text-white m-0`}>{rewardStatus.pointBalance}</h4>
-						</Col>
-						<Col
-							xs="auto"
-							className="tracker d-flex flex-row bg-dark-gray align-items-center justify-content-center"
-						>
-							<img src="./resources/Icons/money.png" width="80px" />
-							<h4 className={`text-white ps-3 m-0`}>{`$${moneyBalance.toFixed(
-								2,
-							)}`}</h4>
-						</Col>
-					</Row>
-					<DndProvider backend={TouchBackend}>
-						<RewardPanel
-							rewardStatus={rewardStatus}
-							claimReward={claimReward}
-							unClaimReward={unClaimReward}
-							color={color}
-							show={showRewardPanel}
-							handleClose={handleCloseRewardPanel}
-						/>
-					</DndProvider>
-				</>
-			)}
+			<RoutineList
+				key={personId}
+				personId={personId}
+				color={color}
+				incrementPointBalance={incrementPointBalance}
+				decrementPointBalance={decrementPointBalance}
+			/>
+			<Row className="fixed-bottom justify-content-end">
+				<Col
+					xs="auto"
+					className={`tracker d-flex flex-row py-3 bg-${color}-dark align-items-center justify-content-center`}
+					onClick={() => setShowRewardPanel(!showRewardPanel)}
+				>
+					<img src="./resources/Icons/points.png" width="80px" />
+					<h4 className={`text-white m-0`}>{rewardStatus.PointBalance}</h4>
+				</Col>
+				<Col
+					xs="auto"
+					className="tracker d-flex flex-row bg-dark-gray align-items-center justify-content-center"
+				>
+					<img src="./resources/Icons/money.png" width="80px" />
+					<h4 className={`text-white ps-3 m-0`}>{`$${moneyBalance.toFixed(
+						2,
+					)}`}</h4>
+				</Col>
+			</Row>
+			<DndProvider backend={TouchBackend}>
+				<RewardPanel
+					rewardStatus={rewardStatus}
+					claimReward={claimReward}
+					unClaimReward={unClaimReward}
+					color={color}
+					show={showRewardPanel}
+					handleClose={handleCloseRewardPanel}
+				/>
+			</DndProvider>
 		</Container>
 	);
 };

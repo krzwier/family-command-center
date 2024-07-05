@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { callFunction } from '../services/CallFunction.js';
 
 export const useTasks = (
 	routineId,
@@ -10,18 +11,15 @@ export const useTasks = (
 	const [listIsComplete, setListIsComplete] = useState(routineIsComplete);
 
 	useEffect(() => {
-		fetch(`http://localhost:4001/tasks/routineId=${routineId}`)
-			.then((response) => response.json())
+		callFunction(`gettasksforroutine/routineid=${routineId}`)
 			.then((data) => {
-				const incomingTasks = data.tasks;
-				setTasks(
-					incomingTasks.map((task) => ({
-						...task,
-						completed: routineIsComplete,
-					})),
-				);
+				const incomingTasks = data.map((task) => ({
+					...task,
+					completed: routineIsComplete,
+				}));
+				setTasks(incomingTasks);
 			});
-	}, [routineId]);
+	}, [routineId, setTasks]);
 
 	const toggleTaskCompletion = useCallback(
 		(taskId) => {
@@ -44,16 +42,9 @@ export const useTasks = (
 	);
 
 	const saveRoutineCompletion = useCallback(
-		(isCompleted) => {
-			fetch(
-				`http://localhost:4001/routines/saveCompletion/routineId=${routineId},isComplete=${
-					isCompleted ? 1 : 0
-				}`,
-				{
-					method: 'GET',
-				},
-			);
-		},
+		(isCompleted) => callFunction(`completeroutine/routineid=${routineId},status=${
+			isCompleted ? 1 : 0
+		}`),
 		[routineId],
 	);
 

@@ -17,7 +17,7 @@ export const Routine = ({
 		routine.RoutineId,
 		incrementPointBalance,
 		decrementPointBalance,
-		Boolean(routine.Completed),
+		routine.IsCompleted,
 	);
 	const [expanded, setExpanded] = useState(!listIsComplete);
 
@@ -68,7 +68,7 @@ export const Routine = ({
 									>
 										<input
 											type="checkbox"
-											id={`routine${routine.RoutineId}task${task.TaskId}`}
+											id={`input-routine${routine.RoutineId}task${task.TaskId}`}
 											value={task.TaskId}
 											className="w-25"
 											checked={task.completed}
@@ -83,7 +83,7 @@ export const Routine = ({
 											}
 										/>
 										<label
-											htmlFor={`routine${routine.RoutineId}task${task.TaskId}`}
+											htmlFor={`input-routine${routine.RoutineId}task${task.TaskId}`}
 											className="taskDescription"
 										>
 											<img

@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
+import { callFunction } from '../services/CallFunction.js';
 
 export const usePerson = (personId) => {
 	const [person, setPerson] = useState({ personName: '' });
 
 	useEffect(() => {
-		fetch(`http://localhost:4001/persons/person/${personId}/`)
-			.then((response) => response.json())
-			.then(setPerson);
-	}, [personId]);
+		callFunction(`getperson/personid=${personId}`)
+			.then((persons) => setPerson(persons[0]));
+	}, [personId, setPerson]);
 
 	return person;
 };
