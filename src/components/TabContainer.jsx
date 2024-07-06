@@ -3,7 +3,6 @@ import { usePersons } from '../hooks/UsePersons';
 import { PersonalDashboard } from './PersonalDashboard';
 import React, { useState } from 'react';
 import { MainDashboard } from './MainDashboard';
-import { MainDashboard } from './MainDashboard';
 
 export const TabContainer = () => {
 	const persons = usePersons();
