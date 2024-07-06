@@ -1,7 +1,7 @@
 node_modules/
 .DS_Store
 .env.local
-public/
+public/resources/workCalendar.ics
 *.pem
 logs/
 build/
