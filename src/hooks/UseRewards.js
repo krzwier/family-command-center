@@ -9,41 +9,45 @@ export const useRewards = (personId) => {
 	});
 
 	const fetchRewards = useCallback(
-		() => {
-			callFunction(`getrewards/personid=${personId}`)
-				.then(setRewardStatus);
-		}, 
-		[personId, setRewardStatus]);
+		async () => { 
+			return await callFunction(`getrewards/personid=${personId}`);
+		}, [personId, setRewardStatus],
+	);
 
-	useEffect(fetchRewards, [fetchRewards]);
+	useEffect(() => {
+		fetchRewards().then(setRewardStatus);
+	}, [fetchRewards, setRewardStatus]);
 
 	const claimReward = useCallback(
-		(reward) => 
-			callFunction(`claimreward/personid=${personId},rewardid=${reward.RewardId}`)
-				.then(() => callFunction(`getrewards/personid=${personId}`))
-				.then((response) => response.json())
-				.then(setRewardStatus),
-		[personId, setRewardStatus],
+		async (reward) => {
+			await callFunction(`claimreward/personid=${personId},rewardid=${reward.RewardId}`);
+			const rewardStatus = await fetchRewards();
+			setRewardStatus(rewardStatus);
+		}, [personId, fetchRewards],
 	);
 
 	const unClaimReward = useCallback(
-		(reward) => 
-			callFunction(`unclaimreward/personid=${personId},rewardid=${reward.RewardId}`)
-				.then(() => callFunction(`getrewards/personid=${personId}`))
-				.then((response) => response.json())
-				.then(setRewardStatus),
-		[personId, setRewardStatus],
+		async (reward) => {
+			await callFunction(`unclaimreward/personid=${personId},rewardid=${reward.RewardId}`);
+			const rewardStatus = await fetchRewards();
+			setRewardStatus(rewardStatus);
+		}, [personId, fetchRewards],
 	);
 
 	const incrementPointBalance = useCallback(
-		() => callFunction(`incrementpointbalance/personid=${personId}`)
-			.then(fetchRewards), 
+		async () => {
+			await callFunction(`incrementpointbalance/personid=${personId}`);
+			const rewardStatus = await fetchRewards();
+			setRewardStatus(rewardStatus);
+		},
 		[personId, fetchRewards]);
 
 	const decrementPointBalance = useCallback(
-		() => callFunction(`decrementpointbalance/personid=${personId}`)
-			.then(fetchRewards),
-		[personId, fetchRewards]);
+		async () => {
+			await callFunction(`decrementpointbalance/personid=${personId}`);
+			const rewardStatus = await fetchRewards();
+			setRewardStatus(rewardStatus);
+		}, [personId, fetchRewards]);
 
 	return { 
 		rewardStatus,
