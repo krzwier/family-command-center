@@ -11,12 +11,13 @@ export const MainDashboard = () => {
 		<>
 			<DateTime />
 			<FullCalendar
+				googleCalendarApiKey={process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY}
 				plugins={[ timeGridPlugin, googleCalendarPlugin, iCalendarPlugin]}
 				eventSources={[
-					{ googleCalendarApiKey: process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY,
-						googleCalendarId: process.env.REACT_APP_PERSONAL_CALENDAR_ID, backgroundColor: 'purple' },
-					{ googleCalendarApiKey: process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY,
-						googleCalendarId: process.env.REACT_APP_FAMILY_CALENDAR_ID, backgroundColor: 'blue' },
+					{ googleCalendarId: process.env.REACT_APP_PERSONAL_CALENDAR_ID, backgroundColor: '#A67EC9E6' },
+					{ googleCalendarId: process.env.REACT_APP_FAMILY_CALENDAR_ID, backgroundColor: '#6B92D6E6' },
+					{ googleCalendarId: process.env.REACT_APP_PRIMARY_WORK_CALENDAR_ID, backgroundColor: 'pink' },
+					{ googleCalendarId: process.env.REACT_APP_SECONDARY_WORK_CALENDAR_ID, backgroundColor: 'green' },
 				]}
 				eventClick={(info) => info.jsEvent.preventDefault()}
 				initialView="timeGridWeek"
