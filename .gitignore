@@ -1,9 +1,9 @@
 node_modules/
 .DS_Store
 .env.local
-public/resources/workCalendar.ics
 *.pem
-logs/
 build/
 .vscode/
-database/data/family-command-center.db3
+api/local.settings.json
+api/bin/
+api/obj/
