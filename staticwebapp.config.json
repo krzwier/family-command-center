@@ -9,12 +9,12 @@
             "route": "/logout",
             "redirect": "/.auth/logout"
           },
+          {
+            "route": "/api/*",
+            "allowedRoles": ["authenticated"]
+          },
       {
         "route": "/*",
-        "allowedRoles": ["authenticated"]
-      },
-      {
-        "route": "/api/*",
         "allowedRoles": ["authenticated"]
       }
     ],
