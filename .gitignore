@@ -5,5 +5,6 @@ node_modules/
 build/
 .vscode/
 api/local.settings.json
+api/oldlocal.settings.json
 api/bin/
 api/obj/
