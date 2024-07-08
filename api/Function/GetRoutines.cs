@@ -11,7 +11,7 @@ public static class GetRoutines
     public static IEnumerable<Routine> Run(
         [HttpTrigger(AuthorizationLevel.Function, "get", Route = "getroutines/personId={personId}")]
         HttpRequestData req,
-        [SqlInput("select * from dbo.Routine where PersonId = @PersonId;", "SqlConnectionString", parameters: "@PersonId={personId}")]
+        [SqlInput("select * from dbo.Routine where PersonId = @PersonId;", "DATABASE_CONNECTION_STRING", parameters: "@PersonId={personId}")]
         IEnumerable<Routine> routines)
     {
         var utcNow = DateTime.UtcNow;

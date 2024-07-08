@@ -12,11 +12,11 @@ public static class GetRewards
     public static RewardResponse Run(
         [HttpTrigger(AuthorizationLevel.Function, "get", Route = "getrewards/personId={personId}")]
         HttpRequestData req,
-        [SqlInput("select * from dbo.Reward;", "SqlConnectionString")]
+        [SqlInput("select * from dbo.Reward;", "DATABASE_CONNECTION_STRING")]
         IEnumerable<Reward> rewards,
-        [SqlInput("select * from dbo.PersonReward where PersonId = @PersonId;", "SqlConnectionString", parameters: "@PersonId={personId}")]
+        [SqlInput("select * from dbo.PersonReward where PersonId = @PersonId;", "DATABASE_CONNECTION_STRING", parameters: "@PersonId={personId}")]
         IEnumerable<PersonReward> personRewards,
-        [SqlInput("select Balance from dbo.PointBank where PersonId = @PersonId;", "SqlConnectionString", parameters: "@PersonId={personId}")]
+        [SqlInput("select Balance from dbo.PointBank where PersonId = @PersonId;", "DATABASE_CONNECTION_STRING", parameters: "@PersonId={personId}")]
         IEnumerable<PointBalance> pointBalances)
     {
         var pointBalance = pointBalances.FirstOrDefault();

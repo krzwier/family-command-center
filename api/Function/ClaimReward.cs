@@ -11,7 +11,7 @@ public static class ClaimReward
     public static bool Run(
               [HttpTrigger(AuthorizationLevel.Function, "get", Route = "claimreward/personId={personId},rewardId={rewardId}")]
         HttpRequestData req,
-        [SqlInput("exec dbo.ClaimReward @PersonId, @RewardId;", "SqlConnectionString", parameters: "@PersonId={personId},@RewardId={rewardId}")]
+        [SqlInput("exec dbo.ClaimReward @PersonId, @RewardId;", "DATABASE_CONNECTION_STRING", parameters: "@PersonId={personId},@RewardId={rewardId}")]
         IEnumerable<Result> results)
     {
         var result = results.FirstOrDefault();
