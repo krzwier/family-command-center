@@ -8,3 +8,4 @@ api/local.settings.json
 api/oldlocal.settings.json
 api/bin/
 api/obj/
+api/key.p12
