@@ -11,11 +11,11 @@
           },
           {
             "route": "/api/*",
-            "allowedRoles": ["authenticated"]
+            "allowedRoles": ["contributor"]
           },
       {
         "route": "/*",
-        "allowedRoles": ["authenticated"]
+        "allowedRoles": ["contributor"]
       }
     ],
     "mimeTypes": {
