@@ -25,7 +25,7 @@ public static class GetCalendar
             new ServiceAccountCredential.Initializer(serviceAccountEmail)
             {
                 Scopes = new[] {CalendarService.Scope.CalendarReadonly}
-            }.FromCertificate(certificate)
+            }.FromPrivateKey(System.Environment.GetEnvironmentVariable("GOOGLE_SERVICE_ACCOUNT_KEY"))
         );
 
         var service = new CalendarService(new CalendarService.Initializer() {

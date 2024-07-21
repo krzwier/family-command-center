@@ -9,3 +9,4 @@ api/oldlocal.settings.json
 api/bin/
 api/obj/
 api/key.p12
+api/key.json
