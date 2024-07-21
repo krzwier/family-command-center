@@ -1,8 +1,6 @@
-using System.Security.Cryptography.X509Certificates;
 using FamilyCommandCenter.Response;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Calendar.v3;
-using Google.Apis.Calendar.v3.Data;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 
@@ -19,12 +17,11 @@ public static class GetCalendar
     {
         var serviceAccountEmail = System.Environment.GetEnvironmentVariable("SERVICE_ACCOUNT_EMAIL");
         var calendarId = System.Environment.GetEnvironmentVariable("CALENDAR_ID");
-        var certificate = new X509Certificate2(@"key.p12", "notasecret", X509KeyStorageFlags.Exportable);
 
         ServiceAccountCredential credential = new ServiceAccountCredential(
             new ServiceAccountCredential.Initializer(serviceAccountEmail)
             {
-                Scopes = new[] {CalendarService.Scope.CalendarReadonly}
+                Scopes = [CalendarService.Scope.CalendarReadonly]
             }.FromPrivateKey(System.Environment.GetEnvironmentVariable("GOOGLE_SERVICE_ACCOUNT_KEY"))
         );
 
