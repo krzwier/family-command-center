@@ -11,7 +11,7 @@ public static class GetCalendar
 {
     [Function("GetCalendar")]
     public static IEnumerable<EventResponse> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", Route = "getcalendar")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "getcalendar")]
         HttpRequestData req,
         string start,
         string end

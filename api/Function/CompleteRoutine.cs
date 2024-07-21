@@ -9,7 +9,7 @@ public static class CompleteRoutine
 {
     [Function("CompleteRoutine")]
     public static bool Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", Route = "completeroutine/routineId={routineId},status={status}")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "completeroutine/routineId={routineId},status={status}")]
         HttpRequestData req,
         [SqlInput("update dbo.Routine set IsCompleted = @Status where RoutineId = @RoutineId;", "DATABASE_CONNECTION_STRING", parameters: "@RoutineId={routineId},@Status={status}")]
         string success)

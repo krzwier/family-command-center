@@ -9,7 +9,7 @@ public static class GetAllPersons
 {
     [Function("GetAllPersons")]
     public static IEnumerable<Person> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", Route = "getallpersons")] HttpRequestData req,
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "getallpersons")] HttpRequestData req,
         [SqlInput("select * from Person", "DATABASE_CONNECTION_STRING")] IEnumerable<Person> persons)
     {
         return persons;

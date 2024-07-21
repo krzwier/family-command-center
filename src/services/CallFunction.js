@@ -6,7 +6,6 @@ export const callFunction = async (endpoint) => {
 			`/api/${endpoint}`,
 			{
 				method: 'GET',
-				headers: { 'x-headers-key': process.env.REACT_APP_AZURE_FUNCTIONS_KEY },
 			},
 		);
 		return await response.json();

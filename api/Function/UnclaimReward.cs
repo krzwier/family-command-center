@@ -9,7 +9,7 @@ public static class UnclaimReward
 {
     [Function("UnclaimReward")]
     public static bool Run(
-              [HttpTrigger(AuthorizationLevel.Function, "get", Route = "unclaimreward/personId={personId},rewardId={rewardId}")]
+              [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "unclaimreward/personId={personId},rewardId={rewardId}")]
         HttpRequestData req,
         [SqlInput("exec dbo.UnclaimReward @PersonId, @RewardId;", "DATABASE_CONNECTION_STRING", parameters: "@PersonId={personId},@RewardId={rewardId}")]
         IEnumerable<Result> results)

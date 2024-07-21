@@ -10,7 +10,7 @@ public static class GetRewards
 {
     [Function("GetRewards")]
     public static RewardResponse Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", Route = "getrewards/personId={personId}")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "getrewards/personId={personId}")]
         HttpRequestData req,
         [SqlInput("select * from dbo.Reward;", "DATABASE_CONNECTION_STRING")]
         IEnumerable<Reward> rewards,

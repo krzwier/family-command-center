@@ -9,7 +9,7 @@ public static class DecrementPointBalance
 {
     [Function("DecrementPointBalance")]
     public static IEnumerable<PointBalance> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", Route = "decrementpointbalance/personId={personId}")] 
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "decrementpointbalance/personId={personId}")] 
         HttpRequestData req,
         [SqlInput("exec dbo.DecrementPointBalance @PersonId;", "DATABASE_CONNECTION_STRING", parameters: "@PersonId={personId}")] IEnumerable<PointBalance> pointBalances)
     {
