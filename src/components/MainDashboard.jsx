@@ -12,13 +12,7 @@ export const MainDashboard = () => {
 			<FullCalendar
 				plugins={[ timeGridPlugin]}
 				eventSources={[
-					{ 
-						url: '/api/getcalendar',
-						format: 'json',
-						// googleCalendarApiKey: process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY,
-						// googleCalendarId: process.env.REACT_APP_PERSONAL_CALENDAR_ID, 
-						backgroundColor: '#A67EC9E6', 
-					},
+					// s
 					// { 
 					// 	googleCalendarApiKey: process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY,
 					// 	googleCalendarId: process.env.REACT_APP_FAMILY_CALENDAR_ID, 
