@@ -2,41 +2,57 @@ import React from 'react';
 import  FullCalendar from '@fullcalendar/react';
 import { DateTime } from './DateTime';
 import timeGridPlugin from '@fullcalendar/timegrid';
-// import googleCalendarPlugin from '@fullcalendar/google-calendar';
-// import iCalendarPlugin from '@fullcalendar/icalendar';
 
 export const MainDashboard = () => {
 	return (
 		<>
 			<DateTime />
 			<FullCalendar
-				plugins={[ timeGridPlugin]}
+				plugins={[ timeGridPlugin ]}
+				initialView="timeGridWeek"
 				eventSources={[
 					{ 
-						url: '/api/getcalendar',
 						format: 'json',
-						// googleCalendarApiKey: process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY,
-						// googleCalendarId: process.env.REACT_APP_PERSONAL_CALENDAR_ID, 
-						backgroundColor: '#A67EC9E6', 
+						url: '/api/getcalendar',
+						extraParams: {
+							calendar: 'personal',
+						},
+						backgroundColor: '#A67EC9', 
 					},
-					// { 
-					// 	googleCalendarApiKey: process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY,
-					// 	googleCalendarId: process.env.REACT_APP_FAMILY_CALENDAR_ID, 
-					// 	backgroundColor: '#6B92D6E6', 
-					// },
-					// { 
-					// 	googleCalendarApiKey: process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY,
-					// 	googleCalendarId: process.env.REACT_APP_PRIMARY_WORK_CALENDAR_ID, 
-					// 	backgroundColor: 'pink', 
-					// },
-					// { 
-					// 	googleCalendarApiKey: process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY,
-					// 	googleCalendarId: process.env.REACT_APP_SECONDARY_WORK_CALENDAR_ID, 
-					// 	backgroundColor: 'green', 
-					// },
+					{ 
+						format: 'json',
+						url: '/api/getcalendar',
+						extraParams: {
+							calendar: 'family',
+						},
+						backgroundColor: '#6B92D6', 
+					},
+					{ 
+						format: 'json',
+						url: '/api/getcalendar',
+						extraParams: {
+							calendar: 'primaryWork',
+						},
+						backgroundColor: '#F58E9C', 
+					},
+					{ 
+						format: 'json',
+						url: '/api/getcalendar',
+						extraParams: {
+							calendar: 'secondaryWork',
+						},
+						backgroundColor: '#97C596', 
+					},		
+					{ 
+						format: 'json',
+						url: '/api/getcalendar',
+						extraParams: {
+							calendar: 'extracurricular',
+						},
+						backgroundColor: '#61516C', 
+					},
 				]}
 				eventClick={(info) => info.jsEvent.preventDefault()}
-				initialView="timeGridWeek"
 				eventMinHeight={60}
 				slotMinTime="6:00:00"
 				slotMaxTime="22:00:00"
