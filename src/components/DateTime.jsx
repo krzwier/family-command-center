@@ -1,35 +1,74 @@
-import { Row, Container, Col } from 'react-bootstrap';
-import React from 'react';
-import CalendarIcon from 'react-calendar-icon';
-import { ThemeProvider } from '@emotion/react';
-import AnalogClock from 'analog-clock-react';
-import { ClockNumbers } from './ClockNumbers';
+import React from "react";
+import { Grid, Box, Typography } from "@mui/material";
+import CalendarIcon from "react-calendar-icon";
+import { ThemeProvider } from "@emotion/react";
+import AnalogClock from "analog-clock-react";
+import { ClockNumbers } from "./ClockNumbers";
+import { Colors } from "../DefaultTheme";
+import { PropTypes } from "prop-types";
 
-export const DateTime = () => {
-	const theme = {
-		calendarIcon: {
-			textColor: 'white',
-			primaryColor: '#343436',
-			backgroundColor: '#fafafa',
-		},
-	};
+const calendarIconTheme = {
+  calendarIcon: {
+    textColor: "white",
+    primaryColor: Colors.greyBackground,
+    backgroundColor: "white",
+  },
+};
 
-	return (
-		<Container className="pb-4">
-			<Row className="d-flex justify-content-end">
-				<Col className="col-2 d-flex justify-content-end p-0 mx-2" >
-					<AnalogClock width="132px" />
-					<ClockNumbers />
-				</Col>
-				<Col className="col-2 d-flex p-0 justify-content-end" >
-					<ThemeProvider theme={theme}>
-						<CalendarIcon 
-							className="calendar-icon"
-							date={new Date()} 
-						/>
-					</ThemeProvider>
-				</Col>
-			</Row>
-		</Container>
-	);
+export const DateTime = ({ title, subtitle }) => {
+  // const [time, setTime] = useState(dayjs(initialDate));
+
+  // const tick = () => {
+  //     setTime(dayjs((new Date()).toString()));
+  // }
+
+  // useEffect(() => {
+  //     const timerId = setInterval(() => tick(), 1000);
+  //     return () => {
+  //         clearInterval(timerId);
+  //     };
+  // })
+
+  return (
+    <>
+      <Grid
+        container
+        justifyContent="space-between"
+        overflow="hidden"
+        paddingLeft={4}
+        paddingRight={2}
+        paddingTop={2}
+        paddingBottom={5}
+        height="180px"
+      >
+        <Grid container alignItems="center" xs={6}>
+          <Grid container alignItems="baseline">
+            <Typography variant="h2">{title ?? ""}</Typography>
+            {title ? (
+              <Typography variant="h2" paddingX={2}>
+                |
+              </Typography>
+            ) : (
+              <></>
+            )}
+            <Typography variant="subtitle1">{subtitle ?? ""}</Typography>
+          </Grid>
+        </Grid>
+        <Grid container justifyContent="end" xs={6}>
+          {/* <Box width="132px" height="132px" color="black" fontSize="1em">
+            <ThemeProvider theme={calendarIconTheme}>
+              <CalendarIcon date={new Date()} />
+            </ThemeProvider>
+          </Box> */}
+          <AnalogClock width="132px" baseColor={Colors.greyBackground} />
+          <ClockNumbers />
+        </Grid>
+      </Grid>
+    </>
+  );
+};
+
+DateTime.propTypes = {
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
 };
