@@ -20,8 +20,6 @@ public static class GetRoutines
         DayOfWeek[] weekend = [DayOfWeek.Sunday, DayOfWeek.Saturday];
         var isSchoolDay = !weekend.Contains(chicagoNow.DayOfWeek);
         var hour = chicagoNow.Hour;
-        isSchoolDay = true;
-
 
         return routines.Where(routine =>
             routine.StartHour <= hour &&
