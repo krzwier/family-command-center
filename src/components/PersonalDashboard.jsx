@@ -1,17 +1,7 @@
 import { usePerson } from "../hooks/UsePerson";
-import { useMoney } from "../hooks/UseMoney";
 import { DateTime } from "./DateTime";
-// import { useDateTime } from "../hooks/UseDateTime";
-// import { Greeting } from "./Greeting";
 import { RoutineList } from "./RoutineList";
-// import { Container, Row, Col } from "react-bootstrap";
-import {
-  Grid,
-  Box,
-  SpeedDial,
-  SpeedDialAction,
-  SpeedDialIcon,
-} from "@mui/material";
+import { Grid, SpeedDial, SpeedDialAction, SpeedDialIcon } from "@mui/material";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import PaidIcon from "@mui/icons-material/Paid";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
@@ -36,10 +26,11 @@ const actions = [
 ];
 
 export const PersonalDashboard = ({ personId, color }) => {
+  const [isSpeedDialOpen, setIsSpeedDialOpen] = React.useState(false);
+  const openSpeedDial = () => setIsSpeedDialOpen(true);
+  const closeSpeedDial = () => setIsSpeedDialOpen(false);
   const [currentComponent, setCurrentComponent] = useState("Routines");
-  const [showRewardPanel, setShowRewardPanel] = useState(false);
   const person = usePerson(personId);
-  const moneyBalance = useMoney(personId);
   const {
     rewardStatus,
     claimReward,
@@ -47,11 +38,6 @@ export const PersonalDashboard = ({ personId, color }) => {
     incrementPointBalance,
     decrementPointBalance,
   } = useRewards(personId);
-
-  const handleCloseRewardPanel = useCallback(
-    () => setShowRewardPanel(false),
-    [setShowRewardPanel]
-  );
 
   const getCurrentComponent = useCallback(() => {
     switch (currentComponent) {
@@ -72,34 +58,33 @@ export const PersonalDashboard = ({ personId, color }) => {
               rewardStatus={rewardStatus}
               claimReward={claimReward}
               unClaimReward={unClaimReward}
-              color={color}
-              show={showRewardPanel}
-              handleClose={handleCloseRewardPanel}
             />
           </DndProvider>
         );
       default:
         return <></>;
     }
-  }, [currentComponent]);
+  }, [
+    currentComponent,
+    rewardStatus,
+    claimReward,
+    unClaimReward,
+    incrementPointBalance,
+    decrementPointBalance,
+  ]);
 
   return (
     <Grid container height="calc(100vh - 109.5px)">
       <DateTime title={person.PersonName} subtitle={currentComponent} />
-      <Grid container height="calc(100% - 180px)" justifyContent="center">
-        {getCurrentComponent()}
-      </Grid>
-      {/* <Grid
-        container
-        width="100vh"
-        // height="100px"
-        // justifyContent="end"
-        padding={3}
-      > */}
+
+      {getCurrentComponent()}
       <SpeedDial
         ariaLabel="Dashboard actions"
         sx={{ position: "absolute", bottom: "140.5px", right: "36px" }}
         icon={<SpeedDialIcon />}
+        onClose={closeSpeedDial}
+        onOpen={openSpeedDial}
+        open={isSpeedDialOpen}
       >
         {actions.map((action) => (
           <SpeedDialAction
@@ -109,35 +94,13 @@ export const PersonalDashboard = ({ personId, color }) => {
             tooltipOpen
             onClick={() => {
               setCurrentComponent(action.name);
+              closeSpeedDial();
             }}
           />
         ))}
       </SpeedDial>
     </Grid>
-    // </Grid>
   );
-  //   <Row className="fixed-bottom justify-content-end">
-  //     <Col
-  //       xs="auto"
-  //       className={`tracker d-flex flex-row py-3 bg-${color}-dark align-items-center justify-content-center`}
-  //       onClick={() => setShowRewardPanel(!showRewardPanel)}
-  //     >
-  //       <img src="./resources/Icons/points.png" width="80px" />
-  //       <h4 className={`text-white m-0`}>{rewardStatus.PointBalance}</h4>
-  //     </Col>
-  //     <Col
-  //       xs="auto"
-  //       className="tracker d-flex flex-row bg-dark-gray align-items-center justify-content-center"
-  //     >
-  //       <img src="./resources/Icons/money.png" width="80px" />
-  //       <h4 className={`text-white ps-3 m-0`}>{`$${moneyBalance.toFixed(
-  //         2
-  //       )}`}</h4>
-  //     </Col>
-  //   </Row>
-
-  // </Container>
-  //   );
 };
 
 PersonalDashboard.propTypes = {

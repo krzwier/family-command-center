@@ -9,6 +9,5 @@ export const useRoutines = (personId) => {
 			.then(setRoutines);
 	},	[personId, setRoutines]);
 
-	console.log(routines);
 	return routines;
 };

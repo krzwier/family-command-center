@@ -1,7 +1,7 @@
 import { useRoutines } from "../hooks/UseRoutines";
 import { Routine } from "./Routine";
 import { PropTypes } from "prop-types";
-import { Stack } from "@mui/material";
+import { Stack, Grid } from "@mui/material";
 import React from "react";
 
 export const RoutineList = ({
@@ -11,20 +11,21 @@ export const RoutineList = ({
   decrementPointBalance,
 }) => {
   const routines = useRoutines(personId);
-  console.log(routines);
 
   return (
-    <Stack spacing={5}>
-      {routines.map((routine) => (
-        <Routine
-          key={routine.RoutineId}
-          routine={routine}
-          color={color}
-          incrementPointBalance={incrementPointBalance}
-          decrementPointBalance={decrementPointBalance}
-        />
-      ))}
-    </Stack>
+    <Grid container justifyContent="center" height="calc(100% - 180px)">
+      <Stack spacing={5} width="60%">
+        {routines.map((routine) => (
+          <Routine
+            key={routine.RoutineId}
+            routine={routine}
+            color={color}
+            incrementPointBalance={incrementPointBalance}
+            decrementPointBalance={decrementPointBalance}
+          />
+        ))}
+      </Stack>
+    </Grid>
   );
 };
 

@@ -1,43 +1,47 @@
-import { useDrop } from 'react-dnd';
-import { AvailableReward } from './AvailableReward';
-import { ItemTypes } from '../ItemTypes';
-import { Card } from 'react-bootstrap';
-import { PropTypes } from 'prop-types';
-import React from 'react';
+import { useDrop } from "react-dnd";
+import { AvailableReward } from "./AvailableReward";
+import { ItemTypes } from "../ItemTypes";
+// import { Card } from "react-bootstrap";
+import { Card, CardHeader, CardContent, Stack } from "@mui/material";
 
-export const AvailableRewardBoard = ({ onDrop, color, availableRewards } ) => {
-	const [, drop] = useDrop({
-		accept: ItemTypes.CLAIMED_REWARD,
-		drop: onDrop,
-		collect: (monitor) => ({
-			isOver: monitor.isOver(),
-			canDrop: monitor.canDrop(),
-		}),
-	});
+import { PropTypes } from "prop-types";
+import React from "react";
 
-	return (
-		<Card ref={drop} className={`mx-2 mb-5 p-2 bg-${color}-light`} style={{ minHeight: '65%' }}>
-			<Card.Title className="p-3">Available Rewards</Card.Title>
-			<Card.Body>
-				{availableRewards.map((reward) => (
-					<AvailableReward
-						key={reward.RewardId}
-						color={color}
-						rewardId={reward.RewardId}
-						dollar={reward.Money}
-						quantity={reward.Quantity}
-						description={reward.Description}
-						points={reward.Points}
-						iconPath={reward.IconPath}
-					/>
-				))}
-			</Card.Body>
-		</Card>
-	);
+export const AvailableRewardBoard = ({ onDrop, color, availableRewards }) => {
+  const [, drop] = useDrop({
+    accept: ItemTypes.CLAIMED_REWARD,
+    drop: onDrop,
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+      canDrop: monitor.canDrop(),
+    }),
+  });
+
+  return (
+    <Card ref={drop}>
+      <CardHeader title="Available Rewards" />
+      <CardContent>
+        <Stack spacing={3}>
+          {availableRewards.map((reward) => (
+            <AvailableReward
+              key={reward.RewardId}
+              color={color}
+              rewardId={reward.RewardId}
+              dollar={reward.Money}
+              quantity={reward.Quantity}
+              description={reward.Description}
+              points={reward.Points}
+              iconPath={reward.IconPath}
+            />
+          ))}
+        </Stack>
+      </CardContent>
+    </Card>
+  );
 };
 
-AvailableRewardBoard.propTypes = { 
-	onDrop: PropTypes.func, 
-	color: PropTypes.string, 
-	availableRewards: PropTypes.array, 
-}; 
+AvailableRewardBoard.propTypes = {
+  onDrop: PropTypes.func,
+  color: PropTypes.string,
+  availableRewards: PropTypes.array,
+};

@@ -4,6 +4,7 @@ export const Colors = {
   yellow: "#ffd600",
   main: "#29b6f6",
   greyBackground: "#2f2f2f",
+  rewardBackground: "#505050",
 };
 
 export const theme = createTheme({
@@ -24,14 +25,54 @@ export const theme = createTheme({
     },
   },
   components: {
+    MuiAccordionDetails: {
+      styleOverrides: {
+        root: {
+          backgroundColor: Colors.greyBackground,
+        },
+      },
+    },
     MuiCard: {
       styleOverrides: {
         root: {
-          "& .MuiCardHeader-title": {
-            fontSize: "1.5em",
-            paddingLeft: 2,
+          width: "100%",
+          backgroundColor: Colors.greyBackground,
+        },
+      },
+    },
+    MuiCardContent: {
+      styleOverrides: {
+        root: {
+          backgroundColor: Colors.greyBackground,
+        },
+      },
+    },
+    MuiCardHeader: {
+      styleOverrides: {
+        root: {
+          backgroundColor: Colors.greyBackground,
+          "& .MuiCardHeader-avatar": {
+            marginRight: "20px",
           },
-          width: "500px",
+          "& .MuiCardHeader-title": {
+            fontSize: "2em",
+          },
+          "&.reward": {
+            backgroundColor: Colors.rewardBackground,
+            paddingRight: "24px",
+            "& .MuiCardHeader-title": {
+              fontSize: "1.25em",
+            },
+          },
+        },
+      },
+    },
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          "& .MuiTypography-root": {
+            fontSize: "1.25em",
+          },
         },
       },
     },

@@ -1,52 +1,54 @@
-import { Alert, Row, Col } from 'react-bootstrap';
-import { useDrag } from 'react-dnd';
-import { ItemTypes } from '../ItemTypes';
-import { PropTypes } from 'prop-types';
-import React from 'react';
+import { useDrag } from "react-dnd";
+import { ItemTypes } from "../ItemTypes";
+import { PropTypes } from "prop-types";
+import { Card, CardHeader, Grid, Typography } from "@mui/material";
+import React from "react";
 
-export const AvailableReward = ({ 
-	color, 
-	rewardId,
-	dollar, 
-	quantity, 
-	description, 
-	points, 
-	iconPath, 
+export const AvailableReward = ({
+  rewardId,
+  dollar,
+  quantity,
+  description,
+  points,
+  iconPath,
 }) => {
-	const [, drag] = useDrag(() => ({
-		type: ItemTypes.AVAILABLE_REWARD,
-		item: { RewardId: rewardId, color, dollar, quantity, description, points, iconPath },
-	}), [rewardId, color, dollar, quantity, description,points, iconPath]);
+  const [, drag] = useDrag(
+    () => ({
+      type: ItemTypes.AVAILABLE_REWARD,
+      item: {
+        RewardId: rewardId,
+        dollar,
+        quantity,
+        description,
+        points,
+        iconPath,
+      },
+    }),
+    [rewardId, dollar, quantity, description, points, iconPath]
+  );
 
-	return (
-		<Alert ref={drag} className={`bg-${color}-dark`}>
-			<Row className="justify-content-between">
-				<Col xs={2}>
-					<img src={iconPath} width="54px" />
-				</Col>
-				<Col xs={7} className="my-auto">
-					<p className="m-0 text-white">
-						{dollar ? `$${quantity} ${description}` : `${description}`}
-					</p>
-				</Col>
-				<Col
-					xs={3}
-					className="my-auto d-flex flex-row align-items-center justify-content-center"
-				>
-					<img src="./resources/Icons/points.png" width="54px" />
-					<h5 className="m-0 text-white">{points}</h5>
-				</Col>
-			</Row>
-		</Alert>
-	);
+  return (
+    <Card ref={drag}>
+      <CardHeader
+        className="reward"
+        avatar={<img src={iconPath} width="54px" />}
+        title={dollar ? `$${quantity} ${description}` : `${description}`}
+        action={
+          <Grid container alignItems="center">
+            <img src="./resources/Icons/points.png" width="54px" />
+            <Typography variant="h4">{points}</Typography>
+          </Grid>
+        }
+      />
+    </Card>
+  );
 };
 
-AvailableReward.propTypes = { 
-	color: PropTypes.string, 
-	rewardId: PropTypes.number,
-	dollar: PropTypes.bool,
-	quantity: PropTypes.number,
-	description: PropTypes.string,
-	points: PropTypes.number,
-	iconPath: PropTypes.string,
+AvailableReward.propTypes = {
+  rewardId: PropTypes.number,
+  dollar: PropTypes.bool,
+  quantity: PropTypes.number,
+  description: PropTypes.string,
+  points: PropTypes.number,
+  iconPath: PropTypes.string,
 };

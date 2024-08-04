@@ -1,9 +1,5 @@
-import { Row, Col, Collapse } from "react-bootstrap";
 import { useTasks } from "../hooks/UseTasks";
 import { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
-import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import { PropTypes } from "prop-types";
@@ -18,12 +14,12 @@ import {
   ListItemButton,
   ListItemAvatar,
   ListItemText,
+  Divider,
 } from "@mui/material";
 import React from "react";
 
 export const Routine = ({
   routine,
-  color,
   incrementPointBalance,
   decrementPointBalance,
 }) => {
@@ -44,6 +40,7 @@ export const Routine = ({
   return (
     <Accordion component={Card} expanded={expanded}>
       <CardHeader
+        sx={{ padding: 4 }}
         avatar={<img src={routine.IconPath} height="50px" />}
         title={routine.RoutineDisplayName}
         onClick={() => setExpanded(!expanded)}
@@ -57,37 +54,37 @@ export const Routine = ({
         }
       />
       <AccordionDetails>
-        <List sx={{ width: "100%" }}>
+        <Divider />
+        <List sx={{ paddingX: 0 }}>
           {tasks.map((task) => {
             const labelId = `input-routine${routine.RoutineId}task${task.TaskId}`;
             return (
               <ListItem
+                sx={{ paddingX: 0 }}
                 key={task.TaskId}
                 secondaryAction={
                   <Checkbox
                     edge="end"
                     key={task.TaskId}
-                    // value={task.completed}
-                    onChange={
-                      (event) => toggleTaskCompletion(task.TaskId)
-                      // parseInt(
-                      //   event.target.id.substring(
-                      //     event.target.id.indexOf("task") + 4
-                      //   )
-                      // )
-                      //   )
-                    }
+                    onChange={() => toggleTaskCompletion(task.TaskId)}
                     checked={task.completed}
+                    size="large"
                     inputProps={{ "aria-labelledby": labelId }}
                   />
                 }
-                disablePadding
+                // disablePadding
               >
-                <ListItemButton>
-                  <ListItemAvatar>
-                    <img src={task.IconPath} height="50px" className="pe-4" />
+                <ListItemButton
+                  onClick={() => toggleTaskCompletion(task.TaskId)}
+                >
+                  <ListItemAvatar sx={{ paddingRight: 3 }}>
+                    <img src={task.IconPath} height="50px" />
                   </ListItemAvatar>
-                  <ListItemText id={labelId} primary={task.TaskDescription} />
+                  <ListItemText
+                    sx={{ fontSize: "20px" }}
+                    id={labelId}
+                    primary={task.TaskDescription}
+                  />
                 </ListItemButton>
               </ListItem>
             );

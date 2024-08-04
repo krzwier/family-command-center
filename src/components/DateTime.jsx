@@ -41,7 +41,7 @@ export const DateTime = ({ title, subtitle }) => {
         paddingBottom={5}
         height="180px"
       >
-        <Grid container alignItems="center" xs={6}>
+        <Grid container item alignItems="center" xs={6}>
           <Grid container alignItems="baseline">
             <Typography variant="h2">{title ?? ""}</Typography>
             {title ? (
@@ -54,12 +54,7 @@ export const DateTime = ({ title, subtitle }) => {
             <Typography variant="subtitle1">{subtitle ?? ""}</Typography>
           </Grid>
         </Grid>
-        <Grid container justifyContent="end" xs={6}>
-          {/* <Box width="132px" height="132px" color="black" fontSize="1em">
-            <ThemeProvider theme={calendarIconTheme}>
-              <CalendarIcon date={new Date()} />
-            </ThemeProvider>
-          </Box> */}
+        <Grid container item justifyContent="end" xs={6}>
           <AnalogClock width="132px" baseColor={Colors.greyBackground} />
           <ClockNumbers />
         </Grid>
