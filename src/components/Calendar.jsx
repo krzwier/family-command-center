@@ -35,6 +35,7 @@ export const Calendar = () => {
 							calendar: 'primaryWork',
 						},
 						color: '#F58E9C',
+						textColor: 'black',
 					},
 					{
 						format: 'json',
@@ -43,6 +44,7 @@ export const Calendar = () => {
 							calendar: 'secondaryWork',
 						},
 						color: '#97C596',
+						textColor: 'black',
 					},
 					{
 						format: 'json',
