@@ -18,6 +18,12 @@
         "allowedRoles": ["contributor"]
       }
     ],
+    "responseOverrides": {
+        "401": {
+            "statusCode": 302,
+            "redirect": "/login"
+        }
+    },
     "mimeTypes": {
       ".json": "text/json"
     },
