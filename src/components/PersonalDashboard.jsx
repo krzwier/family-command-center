@@ -81,7 +81,7 @@ export const PersonalDashboard = ({ personId }) => {
 				ariaLabel="Dashboard actions"
 				sx={{ position: 'absolute', bottom: '140.5px', right: '36px' }}
 				icon={<SpeedDialIcon />}
-				onClose={closeSpeedDial}
+				// onClose={closeSpeedDial}
 				onOpen={openSpeedDial}
 				open={isSpeedDialOpen}
 			>
